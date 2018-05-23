@@ -26,7 +26,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -115,7 +115,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\window\monitor\IMonitor.h" />
+    <ClInclude Include="..\..\src\platform\platform.h" />
+    <ClInclude Include="..\..\src\window\IWindow.h" />
+    <ClInclude Include="..\..\src\window\manager\IWindowManager.h" />
+    <ClInclude Include="..\..\src\window\manager\Win32WindowManager.h" />
+    <ClInclude Include="..\..\src\window\manager\WindowManager.h" />
+    <ClInclude Include="..\..\src\window\monitor\manager\IMonitorManager.h" />
+    <ClInclude Include="..\..\src\window\monitor\manager\MonitorManager.h" />
+    <ClInclude Include="..\..\src\window\monitor\manager\Win32MonitorManager.h" />
+    <ClInclude Include="..\..\src\window\monitor\Monitor.h" />
+    <ClInclude Include="..\..\src\window\Win32Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp" />
+    <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp" />
+    <ClCompile Include="..\..\src\window\monitor\Monitor.cpp" />
+    <ClCompile Include="..\..\src\window\Win32Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

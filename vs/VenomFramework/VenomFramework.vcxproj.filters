@@ -7,10 +7,60 @@
     <Filter Include="window\monitor">
       <UniqueIdentifier>{ddce9935-bbb2-4123-8fdf-ade378488f4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{6df9f193-7e26-43fd-ac94-23255c7529cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="window\manager">
+      <UniqueIdentifier>{d00b9c61-ec93-4e2b-8277-1b1bf96c8b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="window\monitor\manager">
+      <UniqueIdentifier>{67928ed3-64b7-4f52-a171-a2b9273bfd05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\window\monitor\IMonitor.h">
+    <ClInclude Include="..\..\src\window\IWindow.h">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\platform\platform.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\Win32Window.h">
+      <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\monitor\manager\IMonitorManager.h">
+      <Filter>window\monitor\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\monitor\manager\Win32MonitorManager.h">
+      <Filter>window\monitor\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\monitor\manager\MonitorManager.h">
+      <Filter>window\monitor\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\monitor\Monitor.h">
       <Filter>window\monitor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\window\manager\IWindowManager.h">
+      <Filter>window\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\manager\Win32WindowManager.h">
+      <Filter>window\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\window\manager\WindowManager.h">
+      <Filter>window\manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
+      <Filter>window\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\window\Win32Window.cpp">
+      <Filter>window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp">
+      <Filter>window\monitor\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp">
+      <Filter>window\manager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

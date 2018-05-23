@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VenomFramework", "VenomFramework\VenomFramework.vcxproj", "{87A19283-D779-40D8-BE99-F2781B10EAAE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VenomFrameworkTest", "VenomFrameworkTest\VenomFrameworkTest.vcxproj", "{C559F81B-FE8B-47B9-AF3C-2656DE42C4E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87A19283-D779-40D8-BE99-F2781B10EAAE} = {87A19283-D779-40D8-BE99-F2781B10EAAE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
