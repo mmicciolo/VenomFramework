@@ -2,7 +2,12 @@
 #include "../window/monitor/manager/MonitorManager.h"
 #include "../window/Window.h"
 #include "../window/manager/WindowManager.h"
+#include "../input/Keyboard.h"
+#include "../input/KeyboardState.h"
+#include "../input/Keys.h"
+#include "../input/KeyState.h"
 
+#include <iostream>
 #include <vector>
 
 void HandleWindowDestroy(IWindow * window) {
@@ -24,6 +29,11 @@ int main() {
 
 	while (window->IsOpen()) {
 		windowManager->PollForEvents();
+		KeyboardState state;
+		Keyboard::GetState(window, state);
+		if (state.IsKeyDown(Keys::Key::A) || state.IsKeyDown(Keys::Key::Space)) {
+			std::cout << "Key A is down!";
+		}
 	}
 
 	windowManager->ShutDown();

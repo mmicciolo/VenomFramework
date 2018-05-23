@@ -115,6 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\input\Keyboard.h" />
+    <ClInclude Include="..\..\src\input\KeyboardState.h" />
+    <ClInclude Include="..\..\src\input\KeyState.h" />
+    <ClInclude Include="..\..\src\input\Keys.h" />
     <ClInclude Include="..\..\src\platform\platform.h" />
     <ClInclude Include="..\..\src\window\IWindow.h" />
     <ClInclude Include="..\..\src\window\manager\IWindowManager.h" />
@@ -127,6 +131,8 @@
     <ClInclude Include="..\..\src\window\Win32Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\input\Keyboard.cpp" />
+    <ClCompile Include="..\..\src\input\KeyboardState.cpp" />
     <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp" />

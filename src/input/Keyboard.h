@@ -1,0 +1,17 @@
+#ifndef __KEYBOARD_
+#define __KEYBOARD_
+
+#include "KeyState.h"
+#include "../window/IWindow.h"
+
+class KeyboardState;
+
+class Keyboard {
+public:
+	static void GetState(IWindow * window, KeyboardState &keyboardState);
+protected:
+private:
+	static KeyState::State keyState[256];
+};
+
+#endif

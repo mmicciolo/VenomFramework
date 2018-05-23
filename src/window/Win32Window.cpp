@@ -1,6 +1,8 @@
 #include "Win32Window.h"
 #include "monitor\manager\MonitorManager.h"
 #include "manager\IWindowManager.h"
+#include "../input/Keyboard.h"
+#include "../input/Keys.h"
 
 #ifdef WINDOWS
 
@@ -39,6 +41,21 @@ long Win32Window::GetWindowHandle() {
 	return (long)hwnd;
 }
 
+Keys::Key TranslateExtended(WPARAM wParam, LPARAM lParam) {
+	Keys::Key key = (Keys::Key) wParam;
+	int extended = (lParam >> 24) & 0x01;
+	switch (key) {
+	case Keys::Key::Control: {
+		return extended ? Keys::Key::RightControl : Keys::Key::LeftControl;
+	}
+	case Keys::Key::Shift:
+		return extended ? Keys::Key::RightShift : Keys::Key::LeftShift;
+	case Keys::Key::Menu:
+		return extended ? Keys::Key::RightAlt : Keys::Key::LeftAlt;
+	}
+	return key;
+}
+
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	IWindowManager * windowManager = (IWindowManager *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
@@ -56,13 +73,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_KEYDOWN:
-		break;
 	case WM_KEYUP:
-		break;
 	case WM_SYSKEYDOWN:
+	case WM_SYSKEYUP: {
+		KeyState::State state = ((lParam >> 31) & 1) ? KeyState::State::Up : KeyState::State::Down;
+		Keys::Key wParamKey = (Keys::Key) wParam;
+		Keys::Key translatedKey = TranslateExtended(wParam, lParam);
+		KeyState::State * keyState = (KeyState::State *) GetProp(hwnd, "KEYSTATE");
+		keyState[wParamKey] = state;
+		keyState[translatedKey] = state;
 		break;
-	case WM_SYSKEYUP:
-		break;
+	}
 	default:
 		return DefWindowProc(hwnd, msg, wParam, lParam);
 	}
@@ -97,6 +118,7 @@ void Win32Window::CreateNativeWindow(IWindowManager * windowManager) {
 		NULL, NULL, GetModuleHandleW(NULL), NULL);
 
 	SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)windowManager);
+	SetProp(hwnd, "KEYSTATE", this->keyState);
 
 	ShowWindow(hwnd, 1);
 	UpdateWindow(hwnd);
