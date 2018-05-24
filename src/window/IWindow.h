@@ -21,12 +21,21 @@ namespace VF {
 		public:
 			friend class VF::Input::Keyboard;
 			friend class VF::Input::Mouse;
+			virtual void SetWindowTitle(std::string title) = 0;
+			virtual void SetWindowIcon() = 0;
+			virtual void SetWindowPosition(int x, int y) = 0;
+			virtual void SetWindowSize(int width, int height) = 0;
+			virtual void HideWindow(bool hide) = 0;
+			virtual void EnableFullscreen() = 0;
+			virtual void DisableFullscreen() = 0;
 			virtual void CreateNativeWindow(IWindowManager * windowManager) = 0;
 			virtual void Close() = 0;
 			virtual long GetWindowHandle() = 0;
 			bool IsOpen() { return open; };
 			void SetOpen(bool open) { this->open = open; }
 		protected:
+			int x;
+			int y;
 			int width;
 			int height;
 			std::string title;

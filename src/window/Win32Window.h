@@ -16,6 +16,13 @@ namespace VF {
 			Win32Window(int width, int height, std::string title);
 			Win32Window(int width, int height, std::string title, Monitor * monitor);
 			~Win32Window();
+			void SetWindowTitle(std::string title);
+			void SetWindowIcon();
+			void SetWindowPosition(int x, int y);
+			void SetWindowSize(int width, int height);
+			void HideWindow(bool hide);
+			void EnableFullscreen();
+			void DisableFullscreen();
 			void CreateNativeWindow(IWindowManager * windowManager);
 			void Close();
 			long GetWindowHandle();

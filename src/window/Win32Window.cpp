@@ -18,6 +18,8 @@ VF::Window::Win32Window::Win32Window(int width, int height) {
 	this->title = " ";
 	MonitorManager monitorManager;
 	this->monitor = *monitorManager.GetPrimaryMonitor();
+	this->x = this->monitor.GetPosition()->x;
+	this->y = this->monitor.GetPosition()->y;
 }
 
 VF::Window::Win32Window::Win32Window(int width, int height, std::string title) {
@@ -26,6 +28,8 @@ VF::Window::Win32Window::Win32Window(int width, int height, std::string title) {
 	this->title = title;
 	MonitorManager monitorManager;
 	this->monitor = *monitorManager.GetPrimaryMonitor();
+	this->x = this->monitor.GetPosition()->x;
+	this->y = this->monitor.GetPosition()->y;
 }
 
 VF::Window::Win32Window::Win32Window(int width, int height, std::string title, Monitor * monitor) {
@@ -33,6 +37,8 @@ VF::Window::Win32Window::Win32Window(int width, int height, std::string title, M
 	this->height = height;
 	this->title = title;
 	this->monitor = *monitor;
+	this->x = this->monitor.GetPosition()->x;
+	this->y = this->monitor.GetPosition()->y;
 }
 
 VF::Window::Win32Window::~Win32Window() {
@@ -195,6 +201,41 @@ void VF::Window::Win32Window::CreateNativeWindow(IWindowManager * windowManager)
 	UpdateWindow(hwnd);
 
 	open = true;
+}
+
+void VF::Window::Win32Window::SetWindowTitle(std::string title) {
+	SetWindowText(hwnd, title.c_str());
+}
+
+void VF::Window::Win32Window::SetWindowIcon() {
+
+}
+
+void VF::Window::Win32Window::SetWindowPosition(int x, int y) {
+	SetWindowPos(hwnd, NULL, x, y, width, height, 0);
+}
+
+void VF::Window::Win32Window::SetWindowSize(int width, int height) {
+	this->width = width;
+	this->height = height;
+	SetWindowPos(hwnd, NULL, x, y, width, height, 0);
+}
+
+void VF::Window::Win32Window::HideWindow(bool hide) {
+	if (hide) {
+		ShowWindow(hwnd, SW_HIDE);
+	}
+	else {
+		ShowWindow(hwnd, SW_SHOWNORMAL);
+	}
+}
+
+void VF::Window::Win32Window::EnableFullscreen() {
+
+}
+
+void VF::Window::Win32Window::DisableFullscreen() {
+
 }
 
 void VF::Window::Win32Window::Close() {
