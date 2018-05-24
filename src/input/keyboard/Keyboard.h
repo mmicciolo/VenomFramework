@@ -2,7 +2,7 @@
 #define __KEYBOARD_
 
 #include "KeyState.h"
-#include "../window/IWindow.h"
+#include "../../window/IWindow.h"
 
 namespace VF {
 	namespace Input {

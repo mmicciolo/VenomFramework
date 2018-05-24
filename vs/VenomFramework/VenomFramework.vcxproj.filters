@@ -19,6 +19,12 @@
     <Filter Include="input">
       <UniqueIdentifier>{f94b6519-d676-4596-8863-9537f1c8a695}</UniqueIdentifier>
     </Filter>
+    <Filter Include="input\keyboard">
+      <UniqueIdentifier>{221a8fe7-622e-4677-add3-28bafa68ca31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input\mouse">
+      <UniqueIdentifier>{5a01799c-7f36-44de-8f22-3cfda1d5ef05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -51,17 +57,26 @@
     <ClInclude Include="..\..\src\window\manager\WindowManager.h">
       <Filter>window\manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\input\Keys.h">
-      <Filter>input</Filter>
+    <ClInclude Include="..\..\src\input\keyboard\Keyboard.h">
+      <Filter>input\keyboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\input\KeyState.h">
-      <Filter>input</Filter>
+    <ClInclude Include="..\..\src\input\keyboard\KeyboardState.h">
+      <Filter>input\keyboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\input\KeyboardState.h">
-      <Filter>input</Filter>
+    <ClInclude Include="..\..\src\input\keyboard\Keys.h">
+      <Filter>input\keyboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\input\Keyboard.h">
-      <Filter>input</Filter>
+    <ClInclude Include="..\..\src\input\keyboard\KeyState.h">
+      <Filter>input\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\input\mouse\MouseButtons.h">
+      <Filter>input\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\input\mouse\MouseState.h">
+      <Filter>input\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\input\mouse\Mouse.h">
+      <Filter>input\mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,11 +92,17 @@
     <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp">
       <Filter>window\manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\input\Keyboard.cpp">
-      <Filter>input</Filter>
+    <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp">
+      <Filter>input\keyboard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\input\KeyboardState.cpp">
-      <Filter>input</Filter>
+    <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp">
+      <Filter>input\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\input\mouse\Mouse.cpp">
+      <Filter>input\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\input\mouse\MouseState.cpp">
+      <Filter>input\mouse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -115,10 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\input\Keyboard.h" />
-    <ClInclude Include="..\..\src\input\KeyboardState.h" />
-    <ClInclude Include="..\..\src\input\KeyState.h" />
-    <ClInclude Include="..\..\src\input\Keys.h" />
+    <ClInclude Include="..\..\src\input\keyboard\Keyboard.h" />
+    <ClInclude Include="..\..\src\input\keyboard\KeyboardState.h" />
+    <ClInclude Include="..\..\src\input\keyboard\Keys.h" />
+    <ClInclude Include="..\..\src\input\keyboard\KeyState.h" />
+    <ClInclude Include="..\..\src\input\mouse\Mouse.h" />
+    <ClInclude Include="..\..\src\input\mouse\MouseButtons.h" />
+    <ClInclude Include="..\..\src\input\mouse\MouseState.h" />
     <ClInclude Include="..\..\src\platform\platform.h" />
     <ClInclude Include="..\..\src\window\IWindow.h" />
     <ClInclude Include="..\..\src\window\manager\IWindowManager.h" />
@@ -131,8 +134,10 @@
     <ClInclude Include="..\..\src\window\Win32Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\input\Keyboard.cpp" />
-    <ClCompile Include="..\..\src\input\KeyboardState.cpp" />
+    <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
+    <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp" />
+    <ClCompile Include="..\..\src\input\mouse\Mouse.cpp" />
+    <ClCompile Include="..\..\src\input\mouse\MouseState.cpp" />
     <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp" />

@@ -3,11 +3,13 @@
 
 #include <vector>
 #include "monitor\Monitor.h"
-#include "../input/KeyState.h"
+#include "../input/Keyboard/KeyState.h"
+#include "../input/mouse/MouseState.h"
 
 namespace VF {
 	namespace Input {
 		class Keyboard;
+		class Mouse;
 	}
 }
 
@@ -18,6 +20,7 @@ namespace VF {
 		class IWindow {
 		public:
 			friend class VF::Input::Keyboard;
+			friend class VF::Input::Mouse;
 			virtual void CreateNativeWindow(IWindowManager * windowManager) = 0;
 			virtual void Close() = 0;
 			virtual long GetWindowHandle() = 0;
@@ -30,6 +33,7 @@ namespace VF {
 			Monitor monitor;
 			bool open;
 			VF::Input::KeyState::State keyState[256];
+			VF::Input::MouseData mouseData;
 		private:
 		};
 	}
