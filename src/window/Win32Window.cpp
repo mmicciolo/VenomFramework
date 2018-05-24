@@ -6,11 +6,11 @@
 
 #ifdef WINDOWS
 
-Win32Window::Win32Window() {
+VF::Window::Win32Window::Win32Window() {
 
 }
 
-Win32Window::Win32Window(int width, int height) {
+VF::Window::Win32Window::Win32Window(int width, int height) {
 	this->width = width;
 	this->height = height;
 	this->title = " ";
@@ -18,7 +18,7 @@ Win32Window::Win32Window(int width, int height) {
 	this->monitor = *monitorManager.GetPrimaryMonitor();
 }
 
-Win32Window::Win32Window(int width, int height, std::string title) {
+VF::Window::Win32Window::Win32Window(int width, int height, std::string title) {
 	this->width = width;
 	this->height = height;
 	this->title = title;
@@ -26,40 +26,42 @@ Win32Window::Win32Window(int width, int height, std::string title) {
 	this->monitor = *monitorManager.GetPrimaryMonitor();
 }
 
-Win32Window::Win32Window(int width, int height, std::string title, Monitor * monitor) {
+VF::Window::Win32Window::Win32Window(int width, int height, std::string title, Monitor * monitor) {
 	this->width = width;
 	this->height = height;
 	this->title = title;
 	this->monitor = *monitor;
 }
 
-Win32Window::~Win32Window() {
+VF::Window::Win32Window::~Win32Window() {
 
 }
 
-long Win32Window::GetWindowHandle() {
+long VF::Window::Win32Window::GetWindowHandle() {
 	return (long)hwnd;
 }
 
-Keys::Key TranslateExtended(WPARAM wParam, LPARAM lParam) {
-	Keys::Key key = (Keys::Key) wParam;
+VF::Input::Keys::Key TranslateExtended(WPARAM wParam, LPARAM lParam) {
+
+	VF::Input::Keys::Key key = (VF::Input::Keys::Key) wParam;
 	int extended = (lParam >> 24) & 0x01;
 	switch (key) {
-	case Keys::Key::Control: {
-		return extended ? Keys::Key::RightControl : Keys::Key::LeftControl;
+	case
+	VF::Input::Keys::Key::Control: {
+		return extended ? VF::Input::Keys::Key::RightControl : VF::Input::Keys::Key::LeftControl;
 	}
-	case Keys::Key::Shift:
-		return extended ? Keys::Key::RightShift : Keys::Key::LeftShift;
-	case Keys::Key::Menu:
-		return extended ? Keys::Key::RightAlt : Keys::Key::LeftAlt;
+	case VF::Input::Keys::Key::Shift:
+		return extended ? VF::Input::Keys::Key::RightShift : VF::Input::Keys::Key::LeftShift;
+	case VF::Input::Keys::Key::Menu:
+		return extended ? VF::Input::Keys::Key::RightAlt : VF::Input::Keys::Key::LeftAlt;
 	}
 	return key;
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	IWindowManager * windowManager = (IWindowManager *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-	IWindow * window = nullptr;
+	VF::Window::IWindowManager * windowManager = (VF::Window::IWindowManager *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+	VF::Window::IWindow * window = nullptr;
 	if (windowManager != nullptr) {
 		window = windowManager->GetWindowByHandle((long)hwnd);
 	}
@@ -76,10 +78,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_KEYUP:
 	case WM_SYSKEYDOWN:
 	case WM_SYSKEYUP: {
-		KeyState::State state = ((lParam >> 31) & 1) ? KeyState::State::Up : KeyState::State::Down;
-		Keys::Key wParamKey = (Keys::Key) wParam;
-		Keys::Key translatedKey = TranslateExtended(wParam, lParam);
-		KeyState::State * keyState = (KeyState::State *) GetProp(hwnd, "KEYSTATE");
+		VF::Input::KeyState::State state = ((lParam >> 31) & 1) ? VF::Input::KeyState::State::Up : VF::Input::KeyState::State::Down;
+		VF::Input::Keys::Key wParamKey = (VF::Input::Keys::Key) wParam;
+		VF::Input::Keys::Key translatedKey = TranslateExtended(wParam, lParam);
+		VF::Input::KeyState::State * keyState = (VF::Input::KeyState::State *) GetProp(hwnd, "KEYSTATE");
 		keyState[wParamKey] = state;
 		keyState[translatedKey] = state;
 		break;
@@ -90,7 +92,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-void Win32Window::CreateNativeWindow(IWindowManager * windowManager) {
+void VF::Window::Win32Window::CreateNativeWindow(IWindowManager * windowManager) {
 
 	hInstance = GetModuleHandle(0);
 
@@ -126,7 +128,7 @@ void Win32Window::CreateNativeWindow(IWindowManager * windowManager) {
 	open = true;
 }
 
-void Win32Window::Close() {
+void VF::Window::Win32Window::Close() {
 	open = false;
 	DestroyWindow(hwnd);
 	UnregisterClass(title.c_str(), hInstance);

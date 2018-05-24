@@ -5,7 +5,7 @@
 #include "Win32MonitorManager.h"
 
 #ifdef WINDOWS
-typedef Win32MonitorManager MonitorManager;
+typedef VF::Window::Win32MonitorManager MonitorManager;
 #endif
 
 #endif

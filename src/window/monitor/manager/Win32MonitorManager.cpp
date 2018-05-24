@@ -2,7 +2,7 @@
 
 #ifdef WINDOWS
 
-std::vector<Monitor *> Win32MonitorManager::GetMonitors() {
+std::vector<VF::Window::Monitor *> VF::Window::Win32MonitorManager::GetMonitors() {
 
 	monitors.clear();
 
@@ -50,7 +50,7 @@ std::vector<Monitor *> Win32MonitorManager::GetMonitors() {
 	return monitors;
 }
 
-Monitor * Win32MonitorManager::GetPrimaryMonitor() {
+VF::Window::Monitor * VF::Window::Win32MonitorManager::GetPrimaryMonitor() {
 	monitors.clear();
 	std::vector<Monitor *> monitors = GetMonitors();
 	if (monitors.size() > 0) {

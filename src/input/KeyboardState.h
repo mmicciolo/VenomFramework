@@ -6,15 +6,19 @@
 #include "Keyboard.h"
 #include <vector>
 
-class KeyboardState {
-public:
-	friend class Keyboard;
-	bool IsKeyDown(Keys::Key key);
-	bool IsKeyUp(Keys::Key key);
-	std::vector<Keys::Key> GetPressedKeys();
-protected:
-private:
-	KeyState::State keyState[256];
-};
+namespace VF {
+	namespace Input {
+		class KeyboardState {
+		public:
+			friend class Keyboard;
+			bool IsKeyDown(Keys::Key key);
+			bool IsKeyUp(Keys::Key key);
+			std::vector<Keys::Key> GetPressedKeys();
+		protected:
+		private:
+			KeyState::State keyState[256];
+		};
+	}
+}
 
 #endif

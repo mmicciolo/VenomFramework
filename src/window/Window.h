@@ -5,7 +5,7 @@
 #include "../platform/platform.h"
 
 #ifdef WINDOWS
-typedef Win32Window Window;
+typedef VF::Window::Win32Window Window;
 #endif
 
 #endif

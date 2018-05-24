@@ -5,7 +5,7 @@
 #include "../../platform/platform.h"
 
 #ifdef WINDOWS
-typedef Win32WindowManager WindowManager;
+typedef VF::Window::Win32WindowManager WindowManager;
 #endif
 
 #endif

@@ -4,14 +4,18 @@
 #include "KeyState.h"
 #include "../window/IWindow.h"
 
-class KeyboardState;
+namespace VF {
+	namespace Input {
+		class KeyboardState;
 
-class Keyboard {
-public:
-	static void GetState(IWindow * window, KeyboardState &keyboardState);
-protected:
-private:
-	static KeyState::State keyState[256];
-};
+		class Keyboard {
+		public:
+			static void GetState(VF::Window::IWindow * window, KeyboardState &keyboardState);
+		protected:
+		private:
+			static KeyState::State keyState[256];
+		};
+	}
+}
 
 #endif

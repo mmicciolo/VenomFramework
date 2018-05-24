@@ -10,28 +10,28 @@
 #include <iostream>
 #include <vector>
 
-void HandleWindowDestroy(IWindow * window) {
+void HandleWindowDestroy(VF::Window::IWindow * window) {
 	int i = 0;
 }
 
 int main() {
 
-	IMonitorManager * monitorManager = new MonitorManager();
+	VF::Window::IMonitorManager * monitorManager = new MonitorManager();
 
-	Monitor * monitor = monitorManager->GetPrimaryMonitor();
+	VF::Window::Monitor * monitor = monitorManager->GetPrimaryMonitor();
 
-	std::vector<Monitor *> monitors = monitorManager->GetMonitors();
+	std::vector<VF::Window::Monitor *> monitors = monitorManager->GetMonitors();
 
-	IWindowManager * windowManager = new WindowManager();
+	VF::Window::IWindowManager * windowManager = new WindowManager();
 	Window * window = new Window(640, 480);
 	windowManager->AddWindow(window);
 	windowManager->destroyedEvent = HandleWindowDestroy;
 
 	while (window->IsOpen()) {
 		windowManager->PollForEvents();
-		KeyboardState state;
-		Keyboard::GetState(window, state);
-		if (state.IsKeyDown(Keys::Key::A) || state.IsKeyDown(Keys::Key::Space)) {
+		VF::Input::KeyboardState state;
+		VF::Input::Keyboard::GetState(window, state);
+		if (state.IsKeyDown(VF::Input::Keys::Key::A) || state.IsKeyDown(VF::Input::Keys::Key::Space)) {
 			std::cout << "Key A is down!";
 		}
 	}

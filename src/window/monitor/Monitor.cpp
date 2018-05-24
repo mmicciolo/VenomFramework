@@ -1,10 +1,10 @@
 #include "Monitor.h"
 
-Monitor::Monitor() {
+VF::Window::Monitor::Monitor() {
 
 }
 
-Monitor::Monitor(MonitorPosition * position, MonitorSize * size, std::string name, std::vector<WindowMonitorVideoMode *> videoModes, WindowMonitorVideoMode currentVideoMode) {
+VF::Window::Monitor::Monitor(MonitorPosition * position, MonitorSize * size, std::string name, std::vector<WindowMonitorVideoMode *> videoModes, WindowMonitorVideoMode currentVideoMode) {
 	this->monitorPosition = position;
 	this->monitorSize = size;
 	this->monitorName = name;
@@ -12,49 +12,49 @@ Monitor::Monitor(MonitorPosition * position, MonitorSize * size, std::string nam
 	this->currentVideoMode = currentVideoMode;
 }
 
-MonitorPosition * Monitor::GetPosition() {
+VF::Window::MonitorPosition * VF::Window::Monitor::GetPosition() {
 	return monitorPosition;
 }
 
-MonitorSize * Monitor::GetPhysicalSize() {
+VF::Window::MonitorSize * VF::Window::Monitor::GetPhysicalSize() {
 	return monitorSize;
 }
 
-std::string Monitor::GetName() {
+std::string VF::Window::Monitor::GetName() {
 	return monitorName;
 }
 
-std::vector<WindowMonitorVideoMode *> Monitor::GetVideoModes() {
+std::vector<VF::Window::WindowMonitorVideoMode *> VF::Window::Monitor::GetVideoModes() {
 	return videoModes;
 }
 
-WindowMonitorVideoMode Monitor::GetCurrentVideoMode() {
+VF::Window::WindowMonitorVideoMode VF::Window::Monitor::GetCurrentVideoMode() {
 	return currentVideoMode;
 }
 
-MonitorPosition::MonitorPosition() {
+VF::Window::MonitorPosition::MonitorPosition() {
 
 }
 
-MonitorPosition::MonitorPosition(int x, int y) {
+VF::Window::MonitorPosition::MonitorPosition(int x, int y) {
 	this->y = y;
 	this->x = x;
 }
 
-MonitorSize::MonitorSize() {
+VF::Window::MonitorSize::MonitorSize() {
 
 }
 
-MonitorSize::MonitorSize(int width, int height) {
+VF::Window::MonitorSize::MonitorSize(int width, int height) {
 	this->width = width;
 	this->height = height;
 }
 
-WindowMonitorVideoMode::WindowMonitorVideoMode() {
+VF::Window::WindowMonitorVideoMode::WindowMonitorVideoMode() {
 
 }
 
-WindowMonitorVideoMode::WindowMonitorVideoMode(int width, int height, int bitsPerPixel, int refreshRate) {
+VF::Window::WindowMonitorVideoMode::WindowMonitorVideoMode(int width, int height, int bitsPerPixel, int refreshRate) {
 	this->width = width;
 	this->height = height;
 	this->bitsPerPixel = bitsPerPixel;

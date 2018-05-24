@@ -7,13 +7,17 @@
 #ifdef WINDOWS
 #include <Windows.h>
 
-class Win32MonitorManager : public IMonitorManager {
-public:
-	std::vector<Monitor *> GetMonitors();
-	Monitor * GetPrimaryMonitor();
-protected:
-private:
-};
+namespace VF {
+	namespace Window {
+		class Win32MonitorManager : public IMonitorManager {
+		public:
+			std::vector<Monitor *> GetMonitors();
+			Monitor * GetPrimaryMonitor();
+		protected:
+		private:
+		};
+	}
+}
 
 #endif
 

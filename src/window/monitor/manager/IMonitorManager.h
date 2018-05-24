@@ -4,13 +4,17 @@
 #include <vector>
 #include "../Monitor.h"
 
-class IMonitorManager {
-public:
-	virtual std::vector<Monitor *> GetMonitors() = 0;
-	virtual Monitor * GetPrimaryMonitor() = 0;
-protected:
-	std::vector<Monitor *> monitors;
-private:
-};
+namespace VF {
+	namespace Window {
+		class IMonitorManager {
+		public:
+			virtual std::vector<Monitor *> GetMonitors() = 0;
+			virtual Monitor * GetPrimaryMonitor() = 0;
+		protected:
+			std::vector<Monitor *> monitors;
+		private:
+		};
+	}
+}
 
 #endif
