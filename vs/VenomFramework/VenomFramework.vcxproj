@@ -122,7 +122,7 @@
     <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertextElementUsage.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h" />
     <ClInclude Include="..\..\src\input\keyboard\Keyboard.h" />
     <ClInclude Include="..\..\src\input\keyboard\KeyboardState.h" />
     <ClInclude Include="..\..\src\input\keyboard\Keys.h" />

@@ -105,14 +105,14 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertextElementUsage.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\window\Window.h">
       <Filter>window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h">
+      <Filter>graphics\buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
