@@ -4,8 +4,12 @@
 #include "Win32WindowManager.h"
 #include "../../platform/platform.h"
 
-#ifdef WINDOWS
-typedef VF::Window::Win32WindowManager WindowManager;
-#endif
+namespace VF {
+	namespace Window {
+		#ifdef WINDOWS
+		typedef VF::Window::Win32WindowManager WindowManager;
+		#endif
+	}
+}
 
 #endif

@@ -4,8 +4,12 @@
 #include "Win32Window.h"
 #include "../platform/platform.h"
 
-#ifdef WINDOWS
-typedef VF::Window::Win32Window Window;
-#endif
+namespace VF {
+	namespace Window {
+		#ifdef WINDOWS
+		typedef VF::Window::Win32Window Window;
+		#endif
+	}
+}
 
 #endif

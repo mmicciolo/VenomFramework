@@ -1,48 +1,36 @@
-#include "../window/monitor/Monitor.h"
-#include "../window/monitor/manager/MonitorManager.h"
-#include "../window/Window.h"
-#include "../window/manager/WindowManager.h"
-#include "../input/keyboard/Keyboard.h"
-#include "../input/keyboard/KeyboardState.h"
-#include "../input/keyboard/Keys.h"
-#include "../input/keyboard/KeyState.h"
-
-#include "../input/mouse/Mouse.h"
-#include "../input/mouse/MouseState.h"
-
-#include <iostream>
 #include <vector>
 
-void HandleWindowDestroy(VF::Window::IWindow * window) {
-	int i = 0;
+#include "ITest.h"
+#include "Test1 (Window)\Test1Window.h"
+#include "Test2 (Input)\Test2Input.h"
+
+namespace TestTypes {
+	enum Types {
+		Test1Window,
+		Test2Input
+	};
+}
+
+
+std::vector<ITest *> tests;
+TestTypes::Types testType = TestTypes::Test2Input;
+
+void SetupTests() {
+	tests.push_back(new Test1Window());
+	tests.push_back(new Test2Input());
 }
 
 int main() {
 
-	VF::Window::IMonitorManager * monitorManager = new MonitorManager();
+	SetupTests();
 
-	VF::Window::Monitor * monitor = monitorManager->GetPrimaryMonitor();
+	ITest * test = tests.at(testType);
 
-	std::vector<VF::Window::Monitor *> monitors = monitorManager->GetMonitors();
+	test->Init();
 
-	VF::Window::IWindowManager * windowManager = new WindowManager();
-	Window * window = new Window(640, 480);
-	windowManager->AddWindow(window);
-	windowManager->destroyedEvent = HandleWindowDestroy;
-
-	while (window->IsOpen()) {
-		windowManager->PollForEvents();
-		VF::Input::KeyboardState state;
-		VF::Input::Keyboard::GetState(window, state);
-		if (state.IsKeyDown(VF::Input::Keys::Key::A) || state.IsKeyDown(VF::Input::Keys::Key::Space)) {
-			std::cout << "Key A is down!" << std::endl;
-		}
-		VF::Input::MouseState mouseState;
-		VF::Input::Mouse::GetState(window, mouseState);
-		std::cout << mouseState.GetScrollWheelValue() << std::endl;
+	while (test->Running()) {
+		test->Update();
 	}
 
-	windowManager->ShutDown();
-
-	return 0;
+	test->Shutdown();
 }

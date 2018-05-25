@@ -1,22 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <ClCompile Include="..\..\src\test\main.cpp" />
+    <ClCompile Include="..\..\src\test\Test1 (Window)\Test1Window.cpp">
+      <Filter>Test1 %28Window%29</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\test\Test2 (Input)\Test2Input.cpp">
+      <Filter>Test2 %28Input%29</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Test1 %28Window%29">
+      <UniqueIdentifier>{594de15d-5346-4cbd-a6f2-0a4ceb64b3d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Test2 %28Input%29">
+      <UniqueIdentifier>{e4078f77-7a00-443d-91ae-0c53187690bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\test\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\src\test\Test1 (Window)\Test1Window.h">
+      <Filter>Test1 %28Window%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\Test2 (Input)\Test2Input.h">
+      <Filter>Test2 %28Input%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\ITest.h" />
   </ItemGroup>
 </Project>

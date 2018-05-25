@@ -121,6 +121,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\test\main.cpp" />
+    <ClCompile Include="..\..\src\test\Test1 (Window)\Test1Window.cpp" />
+    <ClCompile Include="..\..\src\test\Test2 (Input)\Test2Input.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\test\ITest.h" />
+    <ClInclude Include="..\..\src\test\Test1 (Window)\Test1Window.h" />
+    <ClInclude Include="..\..\src\test\Test2 (Input)\Test2Input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

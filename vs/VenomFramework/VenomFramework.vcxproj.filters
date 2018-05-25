@@ -111,6 +111,9 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\window\Window.h">
+      <Filter>window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
