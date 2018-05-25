@@ -25,6 +25,15 @@
     <Filter Include="input\mouse">
       <UniqueIdentifier>{5a01799c-7f36-44de-8f22-3cfda1d5ef05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="content">
+      <UniqueIdentifier>{46c8c254-4e31-4d18-ad31-0269b2571982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{d48950ff-287a-48a3-9985-256e3d94f912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer">
+      <UniqueIdentifier>{6c9ee7cb-3611-4895-877e-4a06256ec13e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -77,6 +86,30 @@
     </ClInclude>
     <ClInclude Include="..\..\src\input\mouse\Mouse.h">
       <Filter>input\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\BufferUsage.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IVertexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IVertexDeclaration.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertextElementUsage.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h">
+      <Filter>graphics\buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
