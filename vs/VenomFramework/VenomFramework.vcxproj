@@ -77,6 +77,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;D3DCompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -120,9 +123,15 @@
     <ClInclude Include="..\..\src\graphics\buffer\IVertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IVertexDeclaration.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h" />
+    <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h" />
+    <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h" />
+    <ClInclude Include="..\..\src\graphics\device\IGraphicsDevice.h" />
+    <ClInclude Include="..\..\src\graphics\viewport\Viewport.h" />
     <ClInclude Include="..\..\src\input\keyboard\Keyboard.h" />
     <ClInclude Include="..\..\src\input\keyboard\KeyboardState.h" />
     <ClInclude Include="..\..\src\input\keyboard\Keys.h" />
@@ -130,6 +139,7 @@
     <ClInclude Include="..\..\src\input\mouse\Mouse.h" />
     <ClInclude Include="..\..\src\input\mouse\MouseButtons.h" />
     <ClInclude Include="..\..\src\input\mouse\MouseState.h" />
+    <ClInclude Include="..\..\src\math\vector3\Vector3.h" />
     <ClInclude Include="..\..\src\platform\platform.h" />
     <ClInclude Include="..\..\src\window\IWindow.h" />
     <ClInclude Include="..\..\src\window\manager\IWindowManager.h" />
@@ -143,10 +153,15 @@
     <ClInclude Include="..\..\src\window\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
+    <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp" />
+    <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp" />
     <ClCompile Include="..\..\src\input\mouse\Mouse.cpp" />
     <ClCompile Include="..\..\src\input\mouse\MouseState.cpp" />
+    <ClCompile Include="..\..\src\math\vector3\Vector3.cpp" />
     <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp" />

@@ -185,12 +185,15 @@ void VF::Window::Win32Window::CreateNativeWindow(IWindowManager * windowManager)
 
 	RegisterClassEx(&wc);
 
+	RECT windowRect = { 0, 0, width, height };
+	AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
+
 	hwnd = CreateWindowEx(
 		WS_EX_CLIENTEDGE,
 		title.c_str(),
 		title.c_str(),
 		WS_OVERLAPPEDWINDOW,
-		monitor.GetPosition()->x, monitor.GetPosition()->y, width, height,
+		monitor.GetPosition()->x, monitor.GetPosition()->y, windowRect.right - windowRect.left,  windowRect.bottom - windowRect.top,
 		NULL, NULL, GetModuleHandleW(NULL), NULL);
 
 	SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)windowManager);

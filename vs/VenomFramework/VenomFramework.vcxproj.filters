@@ -34,6 +34,24 @@
     <Filter Include="graphics\buffer">
       <UniqueIdentifier>{6c9ee7cb-3611-4895-877e-4a06256ec13e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics\device">
+      <UniqueIdentifier>{80b6b181-adf3-4c17-819d-3a7ffe1310a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\model">
+      <UniqueIdentifier>{1e710a88-183a-4bf2-8243-dd9ffb3c4bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\viewport">
+      <UniqueIdentifier>{913c3bb7-2fdf-4403-ade4-34946f371755}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer\VertexPosition">
+      <UniqueIdentifier>{bad29a0d-a8d2-4235-9592-f680e5109da1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{ba18d541-ed9c-48ad-ad15-c07e27aac29d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math\vector3">
+      <UniqueIdentifier>{13c37dbc-d203-4263-8251-1fa5d3f86a6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -114,6 +132,27 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\device\IGraphicsDevice.h">
+      <Filter>graphics\device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h">
+      <Filter>graphics\device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h">
+      <Filter>graphics\device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\viewport\Viewport.h">
+      <Filter>graphics\viewport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h">
+      <Filter>graphics\buffer\VertexPosition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\vector3\Vector3.h">
+      <Filter>math\vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -139,6 +178,21 @@
     </ClCompile>
     <ClCompile Include="..\..\src\input\mouse\MouseState.cpp">
       <Filter>input\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp">
+      <Filter>graphics\device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp">
+      <Filter>graphics\viewport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp">
+      <Filter>graphics\buffer\VertexPosition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\math\vector3\Vector3.cpp">
+      <Filter>math\vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp">
+      <Filter>graphics\buffer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

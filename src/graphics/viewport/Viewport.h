@@ -5,6 +5,7 @@ namespace VF {
 	namespace Graphics {
 		class Viewport {
 		public:
+			Viewport() { };
 			Viewport(int x, int y, int width, int height);
 			Viewport(int x, int y, int width, int height, float minDepth, float maxDepth);
 			int GetX();

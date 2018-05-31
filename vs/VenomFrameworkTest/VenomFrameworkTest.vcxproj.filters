@@ -8,6 +8,12 @@
     <ClCompile Include="..\..\src\test\Test2 (Input)\Test2Input.cpp">
       <Filter>Test2 %28Input%29</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\test\Test3 (GraphicsDevice)\Test3GraphicsDevice.cpp">
+      <Filter>Test3 %28GraphicsDevice%29</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.cpp">
+      <Filter>Test4 %28VertexBuffer%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test1 %28Window%29">
@@ -15,6 +21,15 @@
     </Filter>
     <Filter Include="Test2 %28Input%29">
       <UniqueIdentifier>{e4078f77-7a00-443d-91ae-0c53187690bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test3 %28GraphicsDevice%29">
+      <UniqueIdentifier>{15077bec-85a0-4f82-b189-6cdfc56f99b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test4 %28VertexBuffer%29">
+      <UniqueIdentifier>{65075d58-a53b-44e3-8be9-2fbad14f66eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test5 %28IndexBuffer%29">
+      <UniqueIdentifier>{d9f47fcf-6e83-4e23-bede-5e81ca091fa7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,5 +40,11 @@
       <Filter>Test2 %28Input%29</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\test\ITest.h" />
+    <ClInclude Include="..\..\src\test\Test3 (GraphicsDevice)\Test3GraphicsDevice.h">
+      <Filter>Test3 %28GraphicsDevice%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.h">
+      <Filter>Test4 %28VertexBuffer%29</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

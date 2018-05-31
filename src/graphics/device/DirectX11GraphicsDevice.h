@@ -1,0 +1,55 @@
+#ifndef __DIRECTX11_GRAPHICS_DEVICE_
+#define __DIRECTX11_GRAPHICS_DEVICE_
+
+#include "IGraphicsDevice.h"
+#include "../../platform/platform.h"
+
+#ifdef WINDOWS
+#include <d3d11.h>
+#include <DirectXMath.h>
+
+namespace VF {
+	namespace Graphics {
+		class DirectX11GraphicsDevice : public IGraphicsDevice {
+		public:
+			DirectX11GraphicsDevice();
+			DirectX11GraphicsDevice(VF::Window::IWindow * window);
+			void Init();
+			void Init2();
+			void Clear();
+			void Present();
+			void DrawPrimitives(IVertexBuffer * vertexBuffer);
+			void DrawIndexedPrimitives();
+			void Shutdown();
+			void * GetDevice();
+		protected:
+		private:
+			VF::Window::IWindow * window;
+			IDXGISwapChain *swapChain;
+			ID3D11Device * device;
+			ID3D11DeviceContext * deviceContext;
+			ID3D11RenderTargetView * backBuffer;
+			DXGI_SWAP_CHAIN_DESC scd;
+			ID3D11Texture2D * pBackBuffer;
+			D3D11_VIEWPORT viewport;
+
+			ID3D11Buffer * m_vertexBuffer;
+			ID3D11InputLayout* m_layout;
+			ID3D11VertexShader* m_vertexShader;
+			ID3D11PixelShader* m_pixelShader;
+			ID3D11Buffer* m_matrixBuffer;
+
+
+			struct MatrixBufferType
+			{
+				DirectX::XMMATRIX  world;
+				DirectX::XMMATRIX  view;
+				DirectX::XMMATRIX  projection;
+			};
+		};
+	}
+}
+
+#endif
+
+#endif

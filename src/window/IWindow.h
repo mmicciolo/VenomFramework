@@ -31,13 +31,14 @@ namespace VF {
 			virtual void CreateNativeWindow(IWindowManager * windowManager) = 0;
 			virtual void Close() = 0;
 			virtual long GetWindowHandle() = 0;
+			virtual Monitor * GetMonitor() { return &monitor; };
 			bool IsOpen() { return open; };
 			void SetOpen(bool open) { this->open = open; }
-		protected:
 			int x;
 			int y;
 			int width;
 			int height;
+		protected:
 			std::string title;
 			Monitor monitor;
 			bool open;
