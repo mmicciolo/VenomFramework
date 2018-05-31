@@ -52,6 +52,9 @@
     <Filter Include="math\vector3">
       <UniqueIdentifier>{13c37dbc-d203-4263-8251-1fa5d3f86a6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics\shader">
+      <UniqueIdentifier>{8c83bfcb-fbd4-420b-881b-0d2a9a8c63af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -153,6 +156,18 @@
     <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\shader\DirectX11Shader.h">
+      <Filter>graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\shader\IShader.h">
+      <Filter>graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\shader\Shader.h">
+      <Filter>graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\shader\ShaderType.h">
+      <Filter>graphics\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -193,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp">
       <Filter>graphics\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\shader\DirectX11Shader.cpp">
+      <Filter>graphics\shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ VF::Graphics::DirectX11VertexBuffer::DirectX11VertexBuffer(IGraphicsDevice * gra
 	this->dx11GraphicsDevice = (DirectX11GraphicsDevice *)graphicsDevice;
 	this->vertexCount = vertexCount;
 	this->vertexDecleration = vertexDecleration;
-	this->vertexDecleration = vertexDecleration;
+	this->bufferUsage = bufferUsage;
 	
 	bufferDescription.Usage = D3D11_USAGE_DEFAULT;
 	bufferDescription.ByteWidth = vertexDecleration.vertexStride * vertexCount;
