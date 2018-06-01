@@ -7,18 +7,20 @@
 #ifdef WINDOWS
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include "../shader/DirectX11Shader.h"
 
 namespace VF {
 	namespace Graphics {
 		class DirectX11GraphicsDevice : public IGraphicsDevice {
 		public:
+			friend class VF::Graphics::DirectX11Shader;
 			DirectX11GraphicsDevice();
 			DirectX11GraphicsDevice(VF::Window::IWindow * window);
 			void Init();
 			void Init2();
 			void Clear();
 			void Present();
-			void DrawPrimitives(IVertexBuffer * vertexBuffer);
+			void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect);
 			void DrawIndexedPrimitives();
 			void Shutdown();
 			void * GetDevice();
@@ -33,19 +35,7 @@ namespace VF {
 			ID3D11Texture2D * pBackBuffer;
 			D3D11_VIEWPORT viewport;
 
-			ID3D11Buffer * m_vertexBuffer;
 			ID3D11InputLayout* m_layout;
-			ID3D11VertexShader* m_vertexShader;
-			ID3D11PixelShader* m_pixelShader;
-			ID3D11Buffer* m_matrixBuffer;
-
-
-			struct MatrixBufferType
-			{
-				DirectX::XMMATRIX  world;
-				DirectX::XMMATRIX  view;
-				DirectX::XMMATRIX  projection;
-			};
 		};
 	}
 }

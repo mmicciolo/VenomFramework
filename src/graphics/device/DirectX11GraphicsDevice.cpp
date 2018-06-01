@@ -1,6 +1,8 @@
 #include "DirectX11GraphicsDevice.h"
 #include "../buffer/DirectX11VertexBuffer.h"
+#include "../effect/IEffect.h"
 #include "D3Dcompiler.h"
+
 VF::Graphics::DirectX11GraphicsDevice::DirectX11GraphicsDevice() {
 
 }
@@ -70,43 +72,10 @@ void VF::Graphics::DirectX11GraphicsDevice::Init2() {
 
 	HRESULT h;
 
-	/*struct VertexType
-	{
-		DirectX::XMFLOAT3 position;
-	};
-
-	unsigned int stride = sizeof(VertexType);
-	unsigned int offset = 0;
-	VertexType* vertices = new VertexType[3];
-	D3D11_BUFFER_DESC vertexBufferDesc;
-	D3D11_SUBRESOURCE_DATA vertexData;
-
-	vertices[0].position = DirectX::XMFLOAT3(-1.0f, -1.0f, 0.0f);
-	vertices[1].position = DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f);
-	vertices[2].position = DirectX::XMFLOAT3(1.0f, -1.0f, 0.0f);
-
-	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	vertexBufferDesc.ByteWidth = sizeof(VertexType) * 3;
-	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.CPUAccessFlags = 0;
-	vertexBufferDesc.MiscFlags = 0;
-	vertexBufferDesc.StructureByteStride = 0;
-
-	vertexData.pSysMem = vertices;
-	vertexData.SysMemPitch = 0;
-	vertexData.SysMemSlicePitch = 0;
-
-	h = device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);*/
-
 	ID3D10Blob* vertexShaderBuffer;
-	ID3D10Blob* pixelShaderBuffer;
 	ID3D10Blob* errorMessage = 0;
 
 	h = D3DCompileFromFile(L"shader.hlsl", NULL, NULL, "ColorVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &vertexShaderBuffer, &errorMessage);
-	h = D3DCompileFromFile(L"shader.hlsl", NULL, NULL, "ColorPixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &pixelShaderBuffer, &errorMessage);
-
-	h = device->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), NULL, &m_vertexShader);
-	h = device->CreatePixelShader(pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(), NULL, &m_pixelShader);
 
 	D3D11_INPUT_ELEMENT_DESC polygonLayout[1];
 	unsigned int numElements;
@@ -123,66 +92,21 @@ void VF::Graphics::DirectX11GraphicsDevice::Init2() {
 	numElements = sizeof(polygonLayout) / sizeof(polygonLayout[0]);
 
 	h = device->CreateInputLayout(polygonLayout, numElements, vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_layout);
-
-	D3D11_BUFFER_DESC matrixBufferDesc;
-
-	matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	matrixBufferDesc.ByteWidth = sizeof(MatrixBufferType);
-	matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	matrixBufferDesc.MiscFlags = 0;
-	matrixBufferDesc.StructureByteStride = 0;
-
-	h = device->CreateBuffer(&matrixBufferDesc, NULL, &m_matrixBuffer);
-
 }
 
-void VF::Graphics::DirectX11GraphicsDevice::DrawPrimitives(IVertexBuffer * vertexBuffer) {
+void VF::Graphics::DirectX11GraphicsDevice::DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect) {
+
 	DirectX11VertexBuffer * vb = (DirectX11VertexBuffer *)vertexBuffer;
-	//deviceContext->IASetVertexBuffers(0, 1, &vb->vertexBuffer, &stride, 0);
-
-	D3D11_MAPPED_SUBRESOURCE mappedResource;
-	MatrixBufferType* dataPtr;
-	DirectX::XMMATRIX worldMatrix = DirectX::XMMatrixTranslation(0, 0, 0);
-
-	DirectX::XMVECTOR eyePosition = DirectX::XMVectorSet(0, 0, -10, 1);
-	DirectX::XMVECTOR focusPoint = DirectX::XMVectorSet(0, 0, 0, 1);
-	DirectX::XMVECTOR upDirection = DirectX::XMVectorSet(0, 1, 0, 0);
-	DirectX::XMMATRIX viewMatrix = DirectX::XMMatrixLookAtLH(eyePosition, focusPoint, upDirection);
-
-	DirectX::XMMATRIX projectionMatrix = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(45.0f), 640 / 480, 0.1f, 100.0f);
-
-	worldMatrix = DirectX::XMMatrixTranspose(worldMatrix);
-	viewMatrix = DirectX::XMMatrixTranspose(viewMatrix);
-	projectionMatrix = DirectX::XMMatrixTranspose(projectionMatrix);
-
-	deviceContext->Map(m_matrixBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
-
-	// Get a pointer to the data in the constant buffer.
-	dataPtr = (MatrixBufferType*)mappedResource.pData;
-
-	// Copy the matrices into the constant buffer.
-	dataPtr->world = worldMatrix;
-	dataPtr->view = viewMatrix;
-	dataPtr->projection = projectionMatrix;
-
-	// Unlock the constant buffer.
-	deviceContext->Unmap(m_matrixBuffer, 0);
 
 	unsigned int stride = 12;
 	unsigned int offset = 0;
 
 	deviceContext->IASetVertexBuffers(0, 1, &vb->vertexBuffer, &stride, &offset);
-	//deviceContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
 	deviceContext->IASetInputLayout(m_layout);
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	deviceContext->VSSetShader(m_vertexShader, NULL, 0);
-	deviceContext->PSSetShader(m_pixelShader, NULL, 0);
+	effect->Apply();
 
-	deviceContext->VSSetConstantBuffers(0, 1, &m_matrixBuffer);
-
-	// Render the triangle.
 	deviceContext->Draw(3, 0);
 }
 

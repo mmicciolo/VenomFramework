@@ -10,8 +10,12 @@ namespace VF{
 		class IShader {
 		public:
 			IShader() { };
-			IShader(IGraphicsDevice * device, ShaderType::Type shaderType, std::string shaderFile) { };
+			IShader(IGraphicsDevice * graphicsDevice, ShaderType::Type shaderType, std::string shaderFile) { };
+			virtual void CreateConstantBuffer(int bufferSize) = 0;
+			virtual void UpdateConstantBuffer(void * bufferData) = 0;
+			virtual void Render() = 0;
 		protected:
+			IGraphicsDevice * graphicsDevice;
 			ShaderType::Type shaderType;
 		private:
 		};

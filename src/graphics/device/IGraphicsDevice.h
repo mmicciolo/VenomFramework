@@ -6,6 +6,7 @@
 
 namespace VF {
 	namespace Graphics {
+		class IEffect;
 		class IVertexBuffer;
 		class IGraphicsDevice {
 		public:
@@ -14,7 +15,7 @@ namespace VF {
 			virtual void Init() = 0;
 			virtual void Clear() = 0;
 			virtual void Present() = 0;
-			virtual void DrawPrimitives(IVertexBuffer * vertexBuffer) = 0;
+			virtual void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect) = 0;
 			virtual void DrawIndexedPrimitives() = 0;
 			virtual void Shutdown() = 0;
 		protected:

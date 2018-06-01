@@ -17,8 +17,8 @@ VF::Graphics::IVertexDecleration VF::Graphics::VertexPosition::GetVertexDeclerat
 
 void * VF::Graphics::VertexPosition::ToByteArray() {
 	float * floatArray = new float[3];
-	floatArray[0] = position.X;
-	floatArray[1] = position.Y;
-	floatArray[2] = position.Z;
+	floatArray[0] = position.x;
+	floatArray[1] = position.y;
+	floatArray[2] = position.z;
 	return floatArray;
 }

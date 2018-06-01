@@ -3,7 +3,7 @@
 
 #include "../IVertexDeclaration.h"
 #include "../IVertexType.h"
-#include "../../../math/vector3/Vector3.h"
+#include "../../../math/Math.h"
 
 namespace VF {
 	namespace Graphics {

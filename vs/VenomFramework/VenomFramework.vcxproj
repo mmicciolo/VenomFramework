@@ -131,6 +131,8 @@
     <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h" />
     <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h" />
     <ClInclude Include="..\..\src\graphics\device\IGraphicsDevice.h" />
+    <ClInclude Include="..\..\src\graphics\effect\basiceffect\BasicEffect.h" />
+    <ClInclude Include="..\..\src\graphics\effect\IEffect.h" />
     <ClInclude Include="..\..\src\graphics\shader\DirectX11Shader.h" />
     <ClInclude Include="..\..\src\graphics\shader\IShader.h" />
     <ClInclude Include="..\..\src\graphics\shader\Shader.h" />
@@ -143,7 +145,11 @@
     <ClInclude Include="..\..\src\input\mouse\Mouse.h" />
     <ClInclude Include="..\..\src\input\mouse\MouseButtons.h" />
     <ClInclude Include="..\..\src\input\mouse\MouseState.h" />
-    <ClInclude Include="..\..\src\math\vector3\Vector3.h" />
+    <ClInclude Include="..\..\src\math\Math.h" />
+    <ClInclude Include="..\..\src\math\Matrix4.h" />
+    <ClInclude Include="..\..\src\math\Vector2.h" />
+    <ClInclude Include="..\..\src\math\Vector3.h" />
+    <ClInclude Include="..\..\src\math\Vector4.h" />
     <ClInclude Include="..\..\src\platform\platform.h" />
     <ClInclude Include="..\..\src\window\IWindow.h" />
     <ClInclude Include="..\..\src\window\manager\IWindowManager.h" />
@@ -160,13 +166,13 @@
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
     <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp" />
+    <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp" />
     <ClCompile Include="..\..\src\graphics\shader\DirectX11Shader.cpp" />
     <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp" />
     <ClCompile Include="..\..\src\input\mouse\Mouse.cpp" />
     <ClCompile Include="..\..\src\input\mouse\MouseState.cpp" />
-    <ClCompile Include="..\..\src\math\vector3\Vector3.cpp" />
     <ClCompile Include="..\..\src\window\manager\Win32WindowManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\manager\Win32MonitorManager.cpp" />
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp" />

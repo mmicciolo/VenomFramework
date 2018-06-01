@@ -8,6 +8,7 @@
 #include "../../window/Window.h"
 #include "../../graphics/device/GraphicsDevice.h"
 #include "../../graphics/buffer/VertexBuffer.h"
+#include "../../graphics/effect/basiceffect/BasicEffect.h"
 #include <vector>
 
 class Test4VertexBuffer : public ITest {
@@ -15,6 +16,7 @@ public:
 	void Init();
 	void Update();
 	void Shutdown();
+	void DrawTriangle();
 protected:
 private:
 	VF::Window::IMonitorManager * monitorManager;
@@ -24,6 +26,7 @@ private:
 	VF::Window::Window * window;
 	VF::Graphics::GraphicsDevice * graphicsDevice;
 	VF::Graphics::VertexBuffer * vertexBuffer;
+	VF::Graphics::BasicEffect * basicEffect;
 };
 
 #endif

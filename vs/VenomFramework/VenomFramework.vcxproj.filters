@@ -49,11 +49,14 @@
     <Filter Include="math">
       <UniqueIdentifier>{ba18d541-ed9c-48ad-ad15-c07e27aac29d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="math\vector3">
-      <UniqueIdentifier>{13c37dbc-d203-4263-8251-1fa5d3f86a6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="graphics\shader">
       <UniqueIdentifier>{8c83bfcb-fbd4-420b-881b-0d2a9a8c63af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\effect">
+      <UniqueIdentifier>{d5a5b1dc-3672-4830-a6d4-9aaa73012197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\effect\basiceffect">
+      <UniqueIdentifier>{99d419ce-55e1-4c54-a968-577b579ba180}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -150,9 +153,6 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h">
       <Filter>graphics\buffer\VertexPosition</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\math\vector3\Vector3.h">
-      <Filter>math\vector3</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
@@ -167,6 +167,27 @@
     </ClInclude>
     <ClInclude Include="..\..\src\graphics\shader\ShaderType.h">
       <Filter>graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\effect\IEffect.h">
+      <Filter>graphics\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\effect\basiceffect\BasicEffect.h">
+      <Filter>graphics\effect\basiceffect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Vector3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Math.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Matrix4.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Vector2.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Vector4.h">
+      <Filter>math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -203,14 +224,14 @@
     <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp">
       <Filter>graphics\buffer\VertexPosition</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\math\vector3\Vector3.cpp">
-      <Filter>math\vector3</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp">
       <Filter>graphics\buffer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\shader\DirectX11Shader.cpp">
       <Filter>graphics\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp">
+      <Filter>graphics\effect\basiceffect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

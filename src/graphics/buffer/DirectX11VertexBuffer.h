@@ -17,10 +17,10 @@ namespace VF {
 			DirectX11VertexBuffer() { };
 			DirectX11VertexBuffer(IGraphicsDevice * graphicsDevice, int vertexCount, IVertexDecleration vertexDecleration, BufferUsage::Usage bufferUsage);
 			void SetData(IVertexType ** vertices);
-			//template<class T> void SetData(T * t);
 			//IVertexDecleration GetVertexDecleration();
 			//BufferUsage::Usage GetBufferUsage();
 			ID3D11Buffer * vertexBuffer;
+			ID3D11InputLayout * inputLayout;
 		protected:
 		private:
 			DirectX11GraphicsDevice * dx11GraphicsDevice;

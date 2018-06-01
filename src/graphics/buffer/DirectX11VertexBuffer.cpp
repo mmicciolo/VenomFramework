@@ -36,16 +36,29 @@ void VF::Graphics::DirectX11VertexBuffer::SetData(IVertexType ** vertices) {
 
 	// Create the vertex buffer.
 	HRESULT H = ((ID3D11Device *) dx11GraphicsDevice->GetDevice())->CreateBuffer(&bufferDescription, &InitData, &vertexBuffer);
+
+	D3D11_INPUT_ELEMENT_DESC * inputElements = new D3D11_INPUT_ELEMENT_DESC[vertexDecleration.GetVertexElements().size()];
+
+	for (int i = 0; i < vertexDecleration.GetVertexElements().size(); i++) {
+
+		switch (vertexDecleration.GetVertexElements().at(i).vertexElementUsage) {
+		case VF::Graphics::VertexElementUsage::Usage::Color:
+			inputElements[i].SemanticName = "POSITION";
+			break;
+		}
+
+		switch (vertexDecleration.GetVertexElements().at(i).vertexElementFormat) {
+		case VF::Graphics::VertexElementFormat::Format::Vector3:
+			inputElements[i].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+			break;
+		}
+
+		inputElements[i].SemanticIndex = vertexDecleration.GetVertexElements().at(i).usageIndex;
+		inputElements[i].InputSlot = 0;
+		inputElements[i].AlignedByteOffset = vertexDecleration.GetVertexElements().at(i).offset;
+		inputElements[i].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		inputElements[i].InstanceDataStepRate = 0;
+	}
+
+	HRESULT H = ((ID3D11Device *)dx11GraphicsDevice->GetDevice())->CreateInputLayout(inputElements, vertexDecleration.GetVertexElements().size(), vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_layout);
 }
-
-//template<class T> void VF::Graphics::DirectX11VertexBuffer::SetData(T * t) {
-
-	// Fill in the subresource data.
-	//D3D11_SUBRESOURCE_DATA InitData;
-	//InitData.pSysMem = verticesCombo;
-	//InitData.SysMemPitch = 0;
-	//InitData.SysMemSlicePitch = 0;
-
-	// Create the vertex buffer.
-	//hr = g_pd3dDevice->CreateBuffer(&bufferDesc, &InitData, &g_pVertexBuffer);
-//}

@@ -14,7 +14,7 @@ namespace VF {
 				vertexStride = GetVertexStride(vertexElements);
 
 			};
-			//virtual std::vector<IVertexElement> GetVertexElements() = 0;
+			std::vector<IVertexElement> GetVertexElements() { return vertexElements; };
 			int vertexStride;
 		protected:
 			
