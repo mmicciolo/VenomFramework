@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\graphics\buffer\BufferUsage.h" />
     <ClInclude Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IVertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IVertexDeclaration.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
     <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp" />
     <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp" />

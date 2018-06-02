@@ -10,6 +10,8 @@ void VF::Graphics::BasicEffect::SetupShaders() {
 	vertexShader = new Shader(graphicsDevice, VF::Graphics::ShaderType::Type::VERTEX, "BasicEffect.hlsl");
 	pixelShader = new Shader(graphicsDevice, VF::Graphics::ShaderType::Type::PIXEL, "BasicEffect.hlsl");
 	vertexShader->CreateConstantBuffer(sizeof(parameters));
+	shaders.push_back(vertexShader);
+	shaders.push_back(pixelShader);
 }
 
 void VF::Graphics::BasicEffect::Apply() {

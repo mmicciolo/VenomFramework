@@ -17,7 +17,6 @@ namespace VF {
 			std::vector<IVertexElement> GetVertexElements() { return vertexElements; };
 			int vertexStride;
 		protected:
-			
 			std::vector<IVertexElement> vertexElements;
 		private:
 			static int GetVertexStride(std::vector<IVertexElement> vertexElements) {

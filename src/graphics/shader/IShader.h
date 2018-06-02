@@ -14,6 +14,7 @@ namespace VF{
 			virtual void CreateConstantBuffer(int bufferSize) = 0;
 			virtual void UpdateConstantBuffer(void * bufferData) = 0;
 			virtual void Render() = 0;
+			ShaderType::Type GetType() { return shaderType; }
 		protected:
 			IGraphicsDevice * graphicsDevice;
 			ShaderType::Type shaderType;

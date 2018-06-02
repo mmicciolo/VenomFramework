@@ -189,6 +189,9 @@
     <ClInclude Include="..\..\src\math\Vector4.h">
       <Filter>math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp">
       <Filter>graphics\effect\basiceffect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp">
+      <Filter>graphics\buffer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

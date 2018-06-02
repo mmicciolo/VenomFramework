@@ -1,4 +1,5 @@
 #include "DirectX11VertexBuffer.h"
+#include "../device/DirectX11GraphicsDevice.h"
 #include<iostream>
 
 VF::Graphics::DirectX11VertexBuffer::DirectX11VertexBuffer(IGraphicsDevice * graphicsDevice, int vertexCount, IVertexDecleration vertexDecleration, BufferUsage::Usage bufferUsage) { 
@@ -7,6 +8,7 @@ VF::Graphics::DirectX11VertexBuffer::DirectX11VertexBuffer(IGraphicsDevice * gra
 	this->vertexCount = vertexCount;
 	this->vertexDecleration = vertexDecleration;
 	this->bufferUsage = bufferUsage;
+	this->inputLayout = new InputLayout(graphicsDevice, vertexDecleration);
 	
 	bufferDescription.Usage = D3D11_USAGE_DEFAULT;
 	bufferDescription.ByteWidth = vertexDecleration.vertexStride * vertexCount;
@@ -36,29 +38,14 @@ void VF::Graphics::DirectX11VertexBuffer::SetData(IVertexType ** vertices) {
 
 	// Create the vertex buffer.
 	HRESULT H = ((ID3D11Device *) dx11GraphicsDevice->GetDevice())->CreateBuffer(&bufferDescription, &InitData, &vertexBuffer);
+}
 
-	D3D11_INPUT_ELEMENT_DESC * inputElements = new D3D11_INPUT_ELEMENT_DESC[vertexDecleration.GetVertexElements().size()];
+void VF::Graphics::DirectX11VertexBuffer::SetBuffer() {
+	unsigned int stride = vertexDecleration.vertexStride;
+	unsigned int offset = 0;
+	((DirectX11GraphicsDevice *)graphicsDevice)->deviceContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+}
 
-	for (int i = 0; i < vertexDecleration.GetVertexElements().size(); i++) {
-
-		switch (vertexDecleration.GetVertexElements().at(i).vertexElementUsage) {
-		case VF::Graphics::VertexElementUsage::Usage::Color:
-			inputElements[i].SemanticName = "POSITION";
-			break;
-		}
-
-		switch (vertexDecleration.GetVertexElements().at(i).vertexElementFormat) {
-		case VF::Graphics::VertexElementFormat::Format::Vector3:
-			inputElements[i].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-			break;
-		}
-
-		inputElements[i].SemanticIndex = vertexDecleration.GetVertexElements().at(i).usageIndex;
-		inputElements[i].InputSlot = 0;
-		inputElements[i].AlignedByteOffset = vertexDecleration.GetVertexElements().at(i).offset;
-		inputElements[i].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-		inputElements[i].InstanceDataStepRate = 0;
-	}
-
-	HRESULT H = ((ID3D11Device *)dx11GraphicsDevice->GetDevice())->CreateInputLayout(inputElements, vertexDecleration.GetVertexElements().size(), vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_layout);
+void VF::Graphics::DirectX11VertexBuffer::SetInputLayout(IEffect * effect) {
+	inputLayout->Apply(effect);
 }

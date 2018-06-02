@@ -19,13 +19,11 @@ VF::Graphics::DirectX11Shader::DirectX11Shader(IGraphicsDevice * graphicsDevice,
 }
 
 void VF::Graphics::DirectX11Shader::LoadVertexShader(std::string shaderFile) {
-	ID3D10Blob* vertexShaderBuffer;
 	HRESULT h = D3DCompileFromFile(std::wstring(shaderFile.begin(), shaderFile.end()).c_str(), NULL, NULL, "ColorVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &vertexShaderBuffer, NULL);
 	h = ((ID3D11Device *)((DirectX11GraphicsDevice *)graphicsDevice)->GetDevice())->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), NULL, &vertexShader);
 }
 
 void VF::Graphics::DirectX11Shader::LoadPixelShader(std::string shaderFile) {
-	ID3D10Blob* pixelShaderBuffer;
 	HRESULT h = D3DCompileFromFile(std::wstring(shaderFile.begin(), shaderFile.end()).c_str(), NULL, NULL, "ColorPixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &pixelShaderBuffer, NULL);
 	h = ((ID3D11Device *)((DirectX11GraphicsDevice *)graphicsDevice)->GetDevice())->CreatePixelShader(pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(), NULL, &pixelShader);
 }

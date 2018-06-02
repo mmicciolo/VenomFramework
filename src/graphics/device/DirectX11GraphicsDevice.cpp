@@ -55,8 +55,6 @@ void VF::Graphics::DirectX11GraphicsDevice::Init() {
 	viewport.MaxDepth = 1.0f;
 
 	deviceContext->RSSetViewports(1, &viewport);
-
-	Init2();
 }
 
 void VF::Graphics::DirectX11GraphicsDevice::Clear() {
@@ -68,41 +66,13 @@ void VF::Graphics::DirectX11GraphicsDevice::Present() {
 	swapChain->Present(0, 0);
 }
 
-void VF::Graphics::DirectX11GraphicsDevice::Init2() {
-
-	HRESULT h;
-
-	ID3D10Blob* vertexShaderBuffer;
-	ID3D10Blob* errorMessage = 0;
-
-	h = D3DCompileFromFile(L"shader.hlsl", NULL, NULL, "ColorVertexShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &vertexShaderBuffer, &errorMessage);
-
-	D3D11_INPUT_ELEMENT_DESC polygonLayout[1];
-	unsigned int numElements;
-
-	// This setup needs to match the VertexType stucture in the ModelClass and in the shader.
-	polygonLayout[0].SemanticName = "POSITION";
-	polygonLayout[0].SemanticIndex = 0;
-	polygonLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	polygonLayout[0].InputSlot = 0;
-	polygonLayout[0].AlignedByteOffset = 0;
-	polygonLayout[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-	polygonLayout[0].InstanceDataStepRate = 0;
-
-	numElements = sizeof(polygonLayout) / sizeof(polygonLayout[0]);
-
-	h = device->CreateInputLayout(polygonLayout, numElements, vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_layout);
-}
-
 void VF::Graphics::DirectX11GraphicsDevice::DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect) {
 
 	DirectX11VertexBuffer * vb = (DirectX11VertexBuffer *)vertexBuffer;
 
-	unsigned int stride = 12;
-	unsigned int offset = 0;
+	vb->SetBuffer();
+	vb->SetInputLayout(effect);
 
-	deviceContext->IASetVertexBuffers(0, 1, &vb->vertexBuffer, &stride, &offset);
-	deviceContext->IASetInputLayout(m_layout);
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	effect->Apply();

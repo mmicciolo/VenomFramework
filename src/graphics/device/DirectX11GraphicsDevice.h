@@ -7,17 +7,19 @@
 #ifdef WINDOWS
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include "../buffer/DirectX11VertexBuffer.h"
 #include "../shader/DirectX11Shader.h"
 
 namespace VF {
 	namespace Graphics {
 		class DirectX11GraphicsDevice : public IGraphicsDevice {
 		public:
+			friend class VF::Graphics::DirectX11VertexBuffer;
 			friend class VF::Graphics::DirectX11Shader;
+			friend class VF::Graphics::InputLayout;
 			DirectX11GraphicsDevice();
 			DirectX11GraphicsDevice(VF::Window::IWindow * window);
 			void Init();
-			void Init2();
 			void Clear();
 			void Present();
 			void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect);
@@ -34,8 +36,6 @@ namespace VF {
 			DXGI_SWAP_CHAIN_DESC scd;
 			ID3D11Texture2D * pBackBuffer;
 			D3D11_VIEWPORT viewport;
-
-			ID3D11InputLayout* m_layout;
 		};
 	}
 }
