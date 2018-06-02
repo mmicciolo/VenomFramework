@@ -27,6 +27,8 @@ namespace VF {
 			void Close();
 			long GetWindowHandle();
 		protected:
+			void SetMouseCursorPosition(int x, int y);
+			void SetMouseInputMode(bool capture, bool hidden);
 		private:
 			HDC	hdc;
 			WNDCLASSEX wc;

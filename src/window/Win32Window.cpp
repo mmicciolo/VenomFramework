@@ -107,8 +107,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 	case WM_MOUSEMOVE: {
 		VF::Input::MouseData * mouseData = (VF::Input::MouseData *) GetProp(hwnd, "MOUSEDATA");
-		mouseData->position.x = (int)LOWORD(lParam);
-		mouseData->position.y = (int)HIWORD(lParam);
+		POINT point;
+		point.x = (int)LOWORD(lParam);
+		point.y = (int)HIWORD(lParam);
+		ClientToScreen(hwnd, &point);
+		mouseData->position.x = point.x;
+		mouseData->position.y = point.y;
 		if (windowManager->mouseMoveEvent != nullptr) {
 			VF::Input::MouseState mouseState;
 			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle((long)hwnd), mouseState);
@@ -241,10 +245,27 @@ void VF::Window::Win32Window::DisableFullscreen() {
 
 }
 
+void VF::Window::Win32Window::SetMouseCursorPosition(int x, int y) {
+	SetCursorPos(x, y);
+}
+
+void VF::Window::Win32Window::SetMouseInputMode(bool capture, bool hidden) {
+	if (capture) {
+		SetCapture(hwnd);
+		RECT windowRect = { 0, 0, width, height };
+		ClipCursor(&windowRect);
+	}
+	else {
+		ReleaseCapture();
+	}
+	ShowCursor(!hidden);
+}
+
 void VF::Window::Win32Window::Close() {
 	open = false;
 	DestroyWindow(hwnd);
 	UnregisterClass(title.c_str(), hInstance);
 }
+
 
 #endif

@@ -39,6 +39,8 @@ namespace VF {
 			int width;
 			int height;
 		protected:
+			virtual void SetMouseCursorPosition(int x, int y) = 0;
+			virtual void SetMouseInputMode(bool capture, bool hidden) = 0;
 			std::string title;
 			Monitor monitor;
 			bool open;
