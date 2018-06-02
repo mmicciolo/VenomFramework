@@ -16,6 +16,7 @@ namespace VF {
 			//template<class T> void SetData(T * t) { };
 			//virtual IVertexDecleration GetVertexDecleration() = 0;
 			//virtual BufferUsage::Usage GetBufferUsage() = 0;
+			int GetVertexCount() { return vertexCount; }
 		protected:
 			virtual void SetBuffer() { };
 			virtual void SetInputLayout() { };
