@@ -21,11 +21,17 @@ void VF::Graphics::InputLayout::Apply(IEffect * effect) {
 			case VF::Graphics::VertexElementUsage::Usage::Position:
 				inputElements[i].SemanticName = "POSITION";
 				break;
+			case VF::Graphics::VertexElementUsage::Usage::Color:
+				inputElements[i].SemanticName = "COLOR";
+				break;
 			}
 
 			switch (vertexDecleration.GetVertexElements().at(i).vertexElementFormat) {
 			case VF::Graphics::VertexElementFormat::Format::Vector3:
 				inputElements[i].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+				break;
+			case VF::Graphics::VertexElementFormat::Format::Vector4:
+				inputElements[i].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 				break;
 			}
 

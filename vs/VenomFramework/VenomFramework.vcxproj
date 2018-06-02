@@ -128,6 +128,7 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h" />
     <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h" />
     <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
     <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp" />
     <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp" />

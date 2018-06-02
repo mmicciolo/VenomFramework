@@ -58,6 +58,9 @@
     <Filter Include="graphics\effect\basiceffect">
       <UniqueIdentifier>{99d419ce-55e1-4c54-a968-577b579ba180}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics\buffer\VertexPositionColor">
+      <UniqueIdentifier>{1479c8b3-4e22-4c6e-b3d2-4e152032583b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h">
+      <Filter>graphics\buffer\VertexPositionColor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -238,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp">
       <Filter>graphics\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp">
+      <Filter>graphics\buffer\VertexPositionColor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
