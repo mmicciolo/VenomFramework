@@ -77,7 +77,7 @@ void VF::Graphics::DirectX11GraphicsDevice::DrawPrimitives(IVertexBuffer * verte
 
 	effect->Apply();
 
-	deviceContext->Draw(3, 0);
+	deviceContext->Draw(vertexBuffer->GetVertexCount(), 0);
 }
 
 void VF::Graphics::DirectX11GraphicsDevice::DrawIndexedPrimitives() {
