@@ -96,10 +96,6 @@ void VF::Graphics::DirectX11GraphicsDevice::DrawIndexedPrimitives(IVertexBuffer 
 	deviceContext->DrawIndexed(indexBuffer->GetIndexCount(), 0, 0);
 }
 
-void VF::Graphics::DirectX11GraphicsDevice::DrawIndexedPrimitives() {
-
-}
-
 void VF::Graphics::DirectX11GraphicsDevice::Shutdown() {
 	deviceContext->Release();
 	swapChain->Release();

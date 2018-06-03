@@ -18,7 +18,6 @@ namespace VF {
 			virtual void Present() = 0;
 			virtual void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect) = 0;
 			virtual void DrawIndexedPrimitives(IVertexBuffer * vertexBuffer, IIndexBuffer * indexBuffer, IEffect * effect) = 0;
-			virtual void DrawIndexedPrimitives() = 0;
 			virtual void Shutdown() = 0;
 		protected:
 			Viewport * viewPort;

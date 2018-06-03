@@ -26,7 +26,6 @@ namespace VF {
 			void Present();
 			void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect);
 			void DrawIndexedPrimitives(IVertexBuffer * vertexBuffer, IIndexBuffer * indexBuffer, IEffect * effect);
-			void DrawIndexedPrimitives();
 			void Shutdown();
 			void * GetDevice();
 		protected:
