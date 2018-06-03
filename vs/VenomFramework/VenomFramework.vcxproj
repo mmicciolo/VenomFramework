@@ -118,6 +118,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\camera\Camera.h" />
+    <ClInclude Include="..\..\src\camera\FirstPersonCamera.h" />
     <ClInclude Include="..\..\src\graphics\buffer\BufferUsage.h" />
     <ClInclude Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h" />
@@ -165,6 +167,8 @@
     <ClInclude Include="..\..\src\window\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\camera\Camera.cpp" />
+    <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp" />

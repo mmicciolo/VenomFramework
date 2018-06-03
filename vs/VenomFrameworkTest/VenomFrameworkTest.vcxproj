@@ -125,6 +125,7 @@
     <ClCompile Include="..\..\src\test\Test2 (Input)\Test2Input.cpp" />
     <ClCompile Include="..\..\src\test\Test3 (GraphicsDevice)\Test3GraphicsDevice.cpp" />
     <ClCompile Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.cpp" />
+    <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\test\ITest.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="..\..\src\test\Test2 (Input)\Test2Input.h" />
     <ClInclude Include="..\..\src\test\Test3 (GraphicsDevice)\Test3GraphicsDevice.h" />
     <ClInclude Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.h" />
+    <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

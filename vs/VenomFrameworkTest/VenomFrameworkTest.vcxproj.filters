@@ -14,6 +14,9 @@
     <ClCompile Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.cpp">
       <Filter>Test4 %28VertexBuffer%29</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp">
+      <Filter>Test6 %28Camera%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test1 %28Window%29">
@@ -31,6 +34,9 @@
     <Filter Include="Test5 %28IndexBuffer%29">
       <UniqueIdentifier>{d9f47fcf-6e83-4e23-bede-5e81ca091fa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Test6 %28Camera%29">
+      <UniqueIdentifier>{bb459bce-83be-44f3-b908-7b60828c60a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\test\Test1 (Window)\Test1Window.h">
@@ -45,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.h">
       <Filter>Test4 %28VertexBuffer%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h">
+      <Filter>Test6 %28Camera%29</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
