@@ -1,6 +1,5 @@
 #include "DirectX11VertexBuffer.h"
 #include "../device/DirectX11GraphicsDevice.h"
-#include<iostream>
 
 VF::Graphics::DirectX11VertexBuffer::DirectX11VertexBuffer(IGraphicsDevice * graphicsDevice, int vertexCount, IVertexDecleration vertexDecleration, BufferUsage::Usage bufferUsage) { 
 	this->graphicsDevice = graphicsDevice;
@@ -25,9 +24,6 @@ void VF::Graphics::DirectX11VertexBuffer::SetData(IVertexType ** vertices) {
 		memcpy(vertexDataArray + byteCount, pointer, vertexDecleration.vertexStride);
 		delete [] pointer;
 		byteCount += vertexDecleration.vertexStride;
-	}
-	for (int i = 0; i < vertexCount * vertexDecleration.vertexStride; i++) {
-		std::cout << std::hex << (int) vertexDataArray[i] << std::endl;
 	}
 
 	// Fill in the subresource data.

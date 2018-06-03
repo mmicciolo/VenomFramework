@@ -207,6 +207,15 @@
     <ClInclude Include="..\..\src\camera\FirstPersonCamera.h">
       <Filter>camera</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IIndexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -262,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp">
       <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.cpp">
+      <Filter>graphics\buffer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

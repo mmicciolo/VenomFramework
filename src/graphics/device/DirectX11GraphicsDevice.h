@@ -8,6 +8,7 @@
 #include <d3d11.h>
 #include <DirectXMath.h>
 #include "../buffer/DirectX11VertexBuffer.h"
+#include "../buffer/DirectX11IndexBuffer.h"
 #include "../shader/DirectX11Shader.h"
 
 namespace VF {
@@ -15,6 +16,7 @@ namespace VF {
 		class DirectX11GraphicsDevice : public IGraphicsDevice {
 		public:
 			friend class VF::Graphics::DirectX11VertexBuffer;
+			friend class VF::Graphics::DirectX11IndexBuffer;
 			friend class VF::Graphics::DirectX11Shader;
 			friend class VF::Graphics::InputLayout;
 			DirectX11GraphicsDevice();
@@ -23,6 +25,7 @@ namespace VF {
 			void Clear();
 			void Present();
 			void DrawPrimitives(IVertexBuffer * vertexBuffer, IEffect * effect);
+			void DrawIndexedPrimitives(IVertexBuffer * vertexBuffer, IIndexBuffer * indexBuffer, IEffect * effect);
 			void DrawIndexedPrimitives();
 			void Shutdown();
 			void * GetDevice();

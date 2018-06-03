@@ -21,11 +21,11 @@ namespace VF {
 			void SetData(IVertexType ** vertices);
 			//IVertexDecleration GetVertexDecleration();
 			//BufferUsage::Usage GetBufferUsage();
-			ID3D11Buffer * vertexBuffer;
 		protected:
 			void SetBuffer();
 			void SetInputLayout(IEffect * effect);
 		private:
+			ID3D11Buffer * vertexBuffer;
 			InputLayout * inputLayout;
 			DirectX11GraphicsDevice * dx11GraphicsDevice;
 			D3D11_BUFFER_DESC bufferDescription;

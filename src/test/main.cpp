@@ -5,6 +5,7 @@
 #include "Test2 (Input)\Test2Input.h"
 #include "Test3 (GraphicsDevice)\Test3GraphicsDevice.h"
 #include "Test4 (VertexBuffer)\Test4VertexBuffer.h"
+#include "Test5 (IndexBuffer)\Test5IndexBuffer.h"
 #include "Test6 (Camera)\Test6Camera.h"
 
 namespace TestTypes {
@@ -20,14 +21,14 @@ namespace TestTypes {
 
 
 std::vector<ITest *> tests;
-TestTypes::Types testType = TestTypes::Test4VertexBuffer;
+TestTypes::Types testType = TestTypes::Test5IndexBuffer;
 
 void SetupTests() {
 	tests.push_back(new Test1Window());
 	tests.push_back(new Test2Input());
 	tests.push_back(new Test3GraphicsDevice());
 	tests.push_back(new Test4VertexBuffer());
-	tests.push_back(new Test4VertexBuffer());
+	tests.push_back(new Test5IndexBuffer());
 	tests.push_back(new Test6Camera());
 }
 

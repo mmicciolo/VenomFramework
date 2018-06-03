@@ -17,6 +17,9 @@
     <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp">
       <Filter>Test6 %28Camera%29</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.cpp">
+      <Filter>Test5 %28IndexBuffer%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test1 %28Window%29">
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h">
       <Filter>Test6 %28Camera%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.h">
+      <Filter>Test5 %28IndexBuffer%29</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

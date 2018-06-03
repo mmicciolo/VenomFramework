@@ -80,6 +80,22 @@ void VF::Graphics::DirectX11GraphicsDevice::DrawPrimitives(IVertexBuffer * verte
 	deviceContext->Draw(vertexBuffer->GetVertexCount(), 0);
 }
 
+void VF::Graphics::DirectX11GraphicsDevice::DrawIndexedPrimitives(IVertexBuffer * vertexBuffer, IIndexBuffer * indexBuffer, IEffect * effect) {
+	DirectX11VertexBuffer * vb = (DirectX11VertexBuffer *)vertexBuffer;
+	DirectX11IndexBuffer * ib = (DirectX11IndexBuffer *)indexBuffer;
+
+	vb->SetBuffer();
+	vb->SetInputLayout(effect);
+
+	ib->SetBuffer();
+
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	effect->Apply();
+
+	deviceContext->DrawIndexed(indexBuffer->GetIndexCount(), 0, 0);
+}
+
 void VF::Graphics::DirectX11GraphicsDevice::DrawIndexedPrimitives() {
 
 }
