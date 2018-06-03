@@ -9,7 +9,7 @@ VF::Camera::Camera::Camera(PerspectiveProjectionParameters parameters, VF::Math:
 }
 
 void VF::Camera::Camera::SetupPerspectiveProjection() {
-	projectionMatrix = VF::Math::perspectiveFovLH<float>(VF::Math::radians(parameters.fieldOfView), parameters.width, parameters.height, parameters.nearClip, parameters.farClip);
+	projectionMatrix = VF::Math::perspectiveFovLH<float>(VF::Math::radians(parameters.fieldOfView), (float )parameters.width, (float) parameters.height, parameters.nearClip, parameters.farClip);
 }
 
 void VF::Camera::Camera::SetupView() {

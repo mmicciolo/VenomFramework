@@ -15,7 +15,7 @@ void VF::Graphics::InputLayout::Apply(IEffect * effect) {
 	if (inputLayout == nullptr) {
 		D3D11_INPUT_ELEMENT_DESC * inputElements = new D3D11_INPUT_ELEMENT_DESC[vertexDecleration.GetVertexElements().size()];
 
-		for (int i = 0; i < vertexDecleration.GetVertexElements().size(); i++) {
+		for (size_t i = 0; i < vertexDecleration.GetVertexElements().size(); i++) {
 
 			switch (vertexDecleration.GetVertexElements().at(i).vertexElementUsage) {
 			case VF::Graphics::VertexElementUsage::Usage::Position:
@@ -44,7 +44,7 @@ void VF::Graphics::InputLayout::Apply(IEffect * effect) {
 
 		std::vector<IShader *> shaders = effect->GetShaders();
 		IShader * vertexShader = nullptr;
-		for (int i = 0; i < shaders.size(); i++) {
+		for (size_t i = 0; i < shaders.size(); i++) {
 			if (shaders.at(i)->GetType() == VF::Graphics::ShaderType::Type::VERTEX) {
 				vertexShader = shaders.at(i);
 			}

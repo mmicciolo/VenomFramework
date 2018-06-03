@@ -1,5 +1,4 @@
 #include "DirectX11IndexBuffer.h"
-#include <iostream>
 
 #ifdef WINDOWS
 
@@ -24,12 +23,6 @@ void VF::Graphics::DirectX11IndexBuffer::SetData(unsigned int * indices) {
 	InitData.pSysMem = indices;
 	InitData.SysMemPitch = 0;
 	InitData.SysMemSlicePitch = 0;
-
-	for (int i = 0; i < indexCount; i++) {
-		std::cout << indices[i] << " ";
-	}
-
-	std::cout << std::endl;
 
 	// Create the vertex buffer.
 	HRESULT H = ((DirectX11GraphicsDevice *) graphicsDevice)->device->CreateBuffer(&bufferDescription, &InitData, &indexBuffer);

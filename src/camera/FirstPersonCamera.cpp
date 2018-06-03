@@ -17,8 +17,8 @@ void VF::Camera::FirstPersonCamera::Move(VF::Window::IWindow * window, VF::Input
 		}
 	}
 	else {
-		leftRightRotation -= 0.05 * (parameters.width / 2 - mouseState.GetMousePosition().x);
-		upDownRotation -= 0.05 * (mouseState.GetMousePosition().y - parameters.height / 2);
+		leftRightRotation -= 0.05f * (parameters.width / 2 - mouseState.GetMousePosition().x);
+		upDownRotation -= 0.05f * (mouseState.GetMousePosition().y - parameters.height / 2);
 	}
 
 	if (upDownRotation > 90) {
@@ -39,16 +39,16 @@ void VF::Camera::FirstPersonCamera::Move(VF::Window::IWindow * window, VF::Input
 	cameraDirection = VF::Math::normalize(rotation);
 
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Key::W)) {
-		position += cameraDirection * VF::Math::Vector3(0.01);
+		position += cameraDirection * VF::Math::Vector3(0.01f);
 	}
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Key::S)) {
-		position -= cameraDirection * VF::Math::Vector3(0.01);
+		position -= cameraDirection * VF::Math::Vector3(0.01f);
 	}
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Key::A)) {
-		position += VF::Math::normalize(VF::Math::cross(cameraDirection, cameraUp)) * VF::Math::Vector3(0.01);
+		position += VF::Math::normalize(VF::Math::cross(cameraDirection, cameraUp)) * VF::Math::Vector3(0.01f);
 	}
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Key::D)) {
-		position -= VF::Math::normalize(VF::Math::cross(cameraDirection, cameraUp)) * VF::Math::Vector3(0.01);
+		position -= VF::Math::normalize(VF::Math::cross(cameraDirection, cameraUp)) * VF::Math::Vector3(0.01f);
 	}
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Key::Left)) {
 		leftRightRotation -= 0.01f;
