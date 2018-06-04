@@ -1,6 +1,6 @@
 #include "FirstPersonCamera.h"
 #include "../input/mouse/Mouse.h"
-#include <iostream>
+
 VF::Camera::FirstPersonCamera::FirstPersonCamera(PerspectiveProjectionParameters parameters, VF::Math::Vector3 position, VF::Math::Vector3 rotation) : Camera(parameters, position, rotation) {
 
 }
@@ -17,18 +17,16 @@ void VF::Camera::FirstPersonCamera::Move(VF::Window::IWindow * window, VF::Input
 		}
 	}
 	else {
-		leftRightRotation -= 0.05f * (parameters.width / 2 - mouseState.GetMousePosition().x);
-		upDownRotation -= 0.05f * (mouseState.GetMousePosition().y - parameters.height / 2);
+		leftRightRotation -= 0.01f * (parameters.width / 2 - mouseState.GetMousePosition().x);
+		upDownRotation -= 0.01f * (mouseState.GetMousePosition().y - parameters.height / 2);
 	}
 
 	if (upDownRotation > 90) {
 		upDownRotation = 90;
 	}
 	if (upDownRotation < -90) {
-		upDownRotation = 90;
+		upDownRotation = -90;
 	}
-
-	std::cout << upDownRotation << std::endl;
 
 	VF::Input::Mouse::SetMouseCursorPosition(window, parameters.width / 2, parameters.height / 2);
 

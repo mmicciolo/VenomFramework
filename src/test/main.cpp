@@ -21,7 +21,7 @@ namespace TestTypes {
 
 
 std::vector<ITest *> tests;
-TestTypes::Types testType = TestTypes::Test4VertexBuffer;
+TestTypes::Types testType = TestTypes::Test6Camera;
 
 void SetupTests() {
 	tests.push_back(new Test1Window());

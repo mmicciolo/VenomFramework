@@ -31,7 +31,7 @@ void Test6Camera::Init() {
 	monitor = monitorManager->GetPrimaryMonitor();
 	monitors = monitorManager->GetMonitors();
 	windowManager = new VF::Window::WindowManager();
-	window = new VF::Window::Window(640, 480, "Test 4 Vertex Buffer");
+	window = new VF::Window::Window(640, 480, "Test 6 Camera");
 	windowManager->AddWindow(window);
 	graphicsDevice = new VF::Graphics::GraphicsDevice(window);
 	graphicsDevice->Init();
