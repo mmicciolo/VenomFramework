@@ -2,7 +2,7 @@
 #include "../../graphics/buffer/VertexPosition/VertexPosition.h"
 #include "../../graphics/buffer/VertexPositionColor/VertexPositionColor.h"
 
-VF::Graphics::VertexBuffer * CreateVertexBuffer2(VF::Graphics::GraphicsDevice * graphicsDevice) {
+void Test6Camera::CreateVertexBuffer() {
 	VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[6];
 	vertices[0] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(0.5f, 1.0f, 1.0f, 1.0f)));
 	vertices[1] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
@@ -10,9 +10,8 @@ VF::Graphics::VertexBuffer * CreateVertexBuffer2(VF::Graphics::GraphicsDevice * 
 	vertices[3] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
 	vertices[4] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
 	vertices[5] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)));
-	VF::Graphics::VertexBuffer * vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 6, new VF::Graphics::VertexPositionColor());
+	vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 6, new VF::Graphics::VertexPositionColor());
 	vertexBuffer->SetData(vertices);
-	return vertexBuffer;
 }
 
 void Test6Camera::SetupCamera() {
@@ -36,7 +35,7 @@ void Test6Camera::Init() {
 	VF::Graphics::Viewport viewPort;
 	graphicsDevice = new VF::Graphics::GraphicsDevice(window, viewPort);
 	graphicsDevice->Init();
-	vertexBuffer = CreateVertexBuffer2(graphicsDevice);
+	CreateVertexBuffer();
 	SetupCamera();
 	basicEffect = new VF::Graphics::BasicEffect();
 }
@@ -55,9 +54,9 @@ void Test6Camera::Update() {
 }
 
 void Test6Camera::Draw() {
-	basicEffect->parameters.projection = camera->GetProjectionMatrix();
-	basicEffect->parameters.view = camera->GetViewMatrix();
-	basicEffect->parameters.world = VF::Math::rotate(VF::Math::Matrix4(1.0f), VF::Math::radians(90.0f), VF::Math::Vector3(1, 0, 0)) * VF::Math::translate(VF::Math::mat4(1.0f), VF::Math::Vector3(0, 0, 0));
+	basicEffect->projectionViewWorld.projection = camera->GetProjectionMatrix();
+	basicEffect->projectionViewWorld.view = camera->GetViewMatrix();
+	basicEffect->projectionViewWorld.world = VF::Math::rotate(VF::Math::Matrix4(1.0f), VF::Math::radians(90.0f), VF::Math::Vector3(1, 0, 0)) * VF::Math::translate(VF::Math::mat4(1.0f), VF::Math::Vector3(0, 0, 0));
 	graphicsDevice->DrawPrimitives(vertexBuffer, basicEffect);
 }
 

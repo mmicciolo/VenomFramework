@@ -13,6 +13,7 @@ void VF::Graphics::BasicEffect::SetupShaders() {
 }
 
 void VF::Graphics::BasicEffect::Apply() {
-	bgfx::setViewTransform(0, &parameters.view, &parameters.projection);;
-	bgfx::setTransform(&parameters.world);
+	//bgfx::setViewTransform(0, &parameters.view, &parameters.projection);;
+	//bgfx::setTransform(&parameters.world);
+	Effect::Apply();
 }

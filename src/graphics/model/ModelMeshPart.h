@@ -10,11 +10,11 @@ namespace VF {
 		public:
 			ModelMeshPart();
 			ModelMeshPart(VertexBuffer * vertexBuffer, IndexBuffer * indexBuffer, Effect * effect);
-		protected:
-		private:
 			VertexBuffer * vertexBuffer;
 			IndexBuffer * indexBuffer;
 			Effect * effect;
+		protected:
+		private:
 		};
 	}
 }

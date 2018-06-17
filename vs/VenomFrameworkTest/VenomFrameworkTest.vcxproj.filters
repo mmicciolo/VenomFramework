@@ -20,6 +20,9 @@
     <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp">
       <Filter>Test6 %28Camera%29</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\test\Test7 (Model)\Test7Model.cpp">
+      <Filter>Test7 %28Model%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test1 %28Window%29">
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="Test6 %28Camera%29">
       <UniqueIdentifier>{bb459bce-83be-44f3-b908-7b60828c60a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test7 %28Model%29">
+      <UniqueIdentifier>{67d46d0f-926d-48f7-bc53-100b2351821d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h">
       <Filter>Test6 %28Camera%29</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\test\Test7 (Model)\Test7Model.h">
+      <Filter>Test7 %28Model%29</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

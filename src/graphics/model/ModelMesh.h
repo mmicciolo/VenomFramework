@@ -5,15 +5,17 @@
 
 namespace VF {
 	namespace Graphics {
+		class GraphicsDevice;
 		class ModelMeshPart;
 		class ModelMesh {
 		public:
-			ModelMesh();
-			ModelMesh(std::vector<ModelMeshPart *> modelMeshParts);
-			Draw();
+			ModelMesh(GraphicsDevice * graphicsDevice);
+			ModelMesh(GraphicsDevice * graphicsDevice, std::vector<ModelMeshPart *> modelMeshParts);
+			void Draw();
+			std::vector<ModelMeshPart *> modelMeshParts;
 		protected:
 		private:
-			std::vector<ModelMeshPart *> modelMeshParts;
+			GraphicsDevice * graphicsDevice;
 		};
 	}
 }

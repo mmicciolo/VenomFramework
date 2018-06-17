@@ -1,5 +1,5 @@
-#ifndef __TEST6_CAMERA_
-#define __TEST6_CAMERA_
+#ifndef __TEST7_MODEL_
+#define __TEST7_MODEL_
 
 #include "../ITest.h"
 #include "../../window/monitor/manager/MonitorManager.h"
@@ -15,7 +15,13 @@
 #include "../../input/mouse/Mouse.h"
 #include <vector>
 
-class Test6Camera : public ITest {
+namespace VF {
+	namespace Graphics {
+		class Model;
+	}
+}
+
+class Test7Model : public ITest {
 public:
 	void Init();
 	void Update();
@@ -24,6 +30,9 @@ public:
 	void UpdateCamera();
 	void Draw();
 	void CreateVertexBuffer();
+	void CreateIndexBuffer();
+	void CreateEffect();
+	void CreateModel();
 protected:
 private:
 	VF::Window::IMonitorManager * monitorManager;
@@ -33,7 +42,9 @@ private:
 	VF::Window::Window * window;
 	VF::Graphics::GraphicsDevice * graphicsDevice;
 	VF::Graphics::VertexBuffer * vertexBuffer;
+	VF::Graphics::IndexBuffer * indexBuffer;
 	VF::Graphics::BasicEffect * basicEffect;
+	VF::Graphics::Model * model;
 	VF::Camera::FirstPersonCamera * camera;
 	VF::Input::KeyboardState keyboardState;
 	VF::Input::MouseState mouseState;

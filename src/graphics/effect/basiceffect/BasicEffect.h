@@ -8,15 +8,12 @@
 namespace VF {
 	namespace Graphics {
 		struct BasicEffectParameters {
-			VF::Math::Matrix4  world;
-			VF::Math::Matrix4 view;
-			VF::Math::Matrix4  projection;
 		};
 		class BasicEffect : public Effect {
 		public:
 			BasicEffect();
-			BasicEffectParameters parameters;
 			void Apply();
+			BasicEffectParameters parameters;
 		protected:
 			void SetupShaders();
 		private:

@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Users\Matt\source\repos\VenomFramework2\vs\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\Matt\source\repos\VenomFramework\vs\Debug;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -129,6 +129,7 @@
     <ClCompile Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp" />
+    <ClCompile Include="..\..\src\test\Test7 (Model)\Test7Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\test\ITest.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="..\..\src\test\Test4 (VertexBuffer)\Test4VertexBuffer.h" />
     <ClInclude Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.h" />
     <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h" />
+    <ClInclude Include="..\..\src\test\Test7 (Model)\Test7Model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
