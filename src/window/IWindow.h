@@ -30,7 +30,7 @@ namespace VF {
 			virtual void DisableFullscreen() = 0;
 			virtual void CreateNativeWindow(IWindowManager * windowManager) = 0;
 			virtual void Close() = 0;
-			virtual long GetWindowHandle() = 0;
+			virtual void * GetWindowHandle() = 0;
 			virtual Monitor * GetMonitor() { return &monitor; };
 			bool IsOpen() { return open; };
 			void SetOpen(bool open) { this->open = open; }

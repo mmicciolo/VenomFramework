@@ -1,4 +1,5 @@
 #include "Test3GraphicsDevice.h"
+#include "../../graphics/viewport/Viewport.h"
 
 void Test3GraphicsDevice::Init() {
 	monitorManager = new VF::Window::MonitorManager();
@@ -7,7 +8,8 @@ void Test3GraphicsDevice::Init() {
 	windowManager = new VF::Window::WindowManager();
 	window = new VF::Window::Window(640, 480, "Test 3 Graphics Device");
 	windowManager->AddWindow(window);
-	graphicsDevice = new VF::Graphics::GraphicsDevice(window);
+	VF::Graphics::Viewport viewPort;
+	graphicsDevice = new VF::Graphics::GraphicsDevice(window, viewPort);
 	graphicsDevice->Init();
 }
 

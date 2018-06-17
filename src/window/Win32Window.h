@@ -25,7 +25,7 @@ namespace VF {
 			void DisableFullscreen();
 			void CreateNativeWindow(IWindowManager * windowManager);
 			void Close();
-			long GetWindowHandle();
+			void * GetWindowHandle();
 		protected:
 			void SetMouseCursorPosition(int x, int y);
 			void SetMouseInputMode(bool capture, bool hidden);

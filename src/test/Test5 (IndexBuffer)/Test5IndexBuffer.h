@@ -28,7 +28,7 @@ private:
 	VF::Window::Window * window;
 	VF::Graphics::GraphicsDevice * graphicsDevice;
 	VF::Graphics::VertexBuffer * vertexBuffer;
-	VF::Graphics::DirectX11IndexBuffer * indexBuffer;
+	VF::Graphics::IndexBuffer * indexBuffer;
 	VF::Graphics::BasicEffect * basicEffect;
 };
 

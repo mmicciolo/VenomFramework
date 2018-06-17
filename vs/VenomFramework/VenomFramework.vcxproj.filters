@@ -31,38 +31,38 @@
     <Filter Include="graphics">
       <UniqueIdentifier>{d48950ff-287a-48a3-9985-256e3d94f912}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\buffer">
-      <UniqueIdentifier>{6c9ee7cb-3611-4895-877e-4a06256ec13e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\device">
-      <UniqueIdentifier>{80b6b181-adf3-4c17-819d-3a7ffe1310a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\model">
-      <UniqueIdentifier>{1e710a88-183a-4bf2-8243-dd9ffb3c4bb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\viewport">
-      <UniqueIdentifier>{913c3bb7-2fdf-4403-ade4-34946f371755}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\buffer\VertexPosition">
-      <UniqueIdentifier>{bad29a0d-a8d2-4235-9592-f680e5109da1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="math">
       <UniqueIdentifier>{ba18d541-ed9c-48ad-ad15-c07e27aac29d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\shader">
-      <UniqueIdentifier>{8c83bfcb-fbd4-420b-881b-0d2a9a8c63af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\effect">
-      <UniqueIdentifier>{d5a5b1dc-3672-4830-a6d4-9aaa73012197}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\effect\basiceffect">
-      <UniqueIdentifier>{99d419ce-55e1-4c54-a968-577b579ba180}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\buffer\VertexPositionColor">
-      <UniqueIdentifier>{1479c8b3-4e22-4c6e-b3d2-4e152032583b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="camera">
       <UniqueIdentifier>{7c720985-14ed-4018-a341-1b6b3af7ff8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\device">
+      <UniqueIdentifier>{90d3c52a-ab4a-4786-ba5f-313b5bf5e262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\viewport">
+      <UniqueIdentifier>{52b73082-7a2a-44b6-ab44-550366e35c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer">
+      <UniqueIdentifier>{960ca14b-297c-4dc3-883e-73b3bd706620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer\VertexPosition">
+      <UniqueIdentifier>{8219b8a9-93fc-4535-bb39-455b747e1b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\shader">
+      <UniqueIdentifier>{608fa0dd-be19-4936-b055-e094fa6c3832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\effect">
+      <UniqueIdentifier>{b823aa10-aa70-4d94-ad90-8196dc38f468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\effect\BasicEffect">
+      <UniqueIdentifier>{dd85ecb9-4a0a-48d8-818f-6202a0950814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer\VertexPositionColor">
+      <UniqueIdentifier>{db4c03b2-9089-4267-97a8-29a29bde38bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\model">
+      <UniqueIdentifier>{e037e269-7100-47f8-9d18-b804e9b499b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,68 +117,8 @@
     <ClInclude Include="..\..\src\input\mouse\Mouse.h">
       <Filter>input\mouse</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\BufferUsage.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexBuffer.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexDeclaration.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\window\Window.h">
       <Filter>window</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\device\IGraphicsDevice.h">
-      <Filter>graphics\device</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h">
-      <Filter>graphics\device</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h">
-      <Filter>graphics\device</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\viewport\Viewport.h">
-      <Filter>graphics\viewport</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h">
-      <Filter>graphics\buffer\VertexPosition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\shader\DirectX11Shader.h">
-      <Filter>graphics\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\shader\IShader.h">
-      <Filter>graphics\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\shader\Shader.h">
-      <Filter>graphics\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\shader\ShaderType.h">
-      <Filter>graphics\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\effect\IEffect.h">
-      <Filter>graphics\effect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\effect\basiceffect\BasicEffect.h">
-      <Filter>graphics\effect\basiceffect</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Vector3.h">
       <Filter>math</Filter>
@@ -195,26 +135,50 @@
     <ClInclude Include="..\..\src\math\Vector4.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h">
-      <Filter>graphics\buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h">
-      <Filter>graphics\buffer\VertexPositionColor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\camera\Camera.h">
       <Filter>camera</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\camera\FirstPersonCamera.h">
       <Filter>camera</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.h">
-      <Filter>graphics\buffer</Filter>
+    <ClInclude Include="..\..\src\graphics\viewport\Viewport.h">
+      <Filter>graphics\viewport</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\IIndexBuffer.h">
-      <Filter>graphics\buffer</Filter>
+    <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h">
+      <Filter>graphics\device</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h">
       <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h">
+      <Filter>graphics\buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h">
+      <Filter>graphics\buffer\VertexPosition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\shader\Shader.h">
+      <Filter>graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\effect\Effect.h">
+      <Filter>graphics\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.h">
+      <Filter>graphics\effect\BasicEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h">
+      <Filter>graphics\buffer\VertexPositionColor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\model\Model.h">
+      <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\model\ModelMesh.h">
+      <Filter>graphics\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\model\ModelMeshPart.h">
+      <Filter>graphics\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -242,38 +206,50 @@
     <ClCompile Include="..\..\src\input\mouse\MouseState.cpp">
       <Filter>input\mouse</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp">
-      <Filter>graphics\device</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp">
-      <Filter>graphics\viewport</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp">
-      <Filter>graphics\buffer\VertexPosition</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp">
-      <Filter>graphics\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\shader\DirectX11Shader.cpp">
-      <Filter>graphics\shader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp">
-      <Filter>graphics\effect\basiceffect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp">
-      <Filter>graphics\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp">
-      <Filter>graphics\buffer\VertexPositionColor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\camera\Camera.cpp">
       <Filter>camera</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp">
       <Filter>camera</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.cpp">
+    <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp">
+      <Filter>graphics\viewport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\device\GraphicsDevice.cpp">
+      <Filter>graphics\device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp">
       <Filter>graphics\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp">
+      <Filter>graphics\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp">
+      <Filter>graphics\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp">
+      <Filter>graphics\buffer\VertexPosition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\shader\Shader.cpp">
+      <Filter>graphics\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\effect\Effect.cpp">
+      <Filter>graphics\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.cpp">
+      <Filter>graphics\effect\BasicEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp">
+      <Filter>graphics\buffer\VertexPositionColor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\model\Model.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp">
+      <Filter>graphics\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\model\ModelMeshPart.cpp">
+      <Filter>graphics\model</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

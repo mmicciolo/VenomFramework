@@ -45,8 +45,8 @@ VF::Window::Win32Window::~Win32Window() {
 
 }
 
-long VF::Window::Win32Window::GetWindowHandle() {
-	return (long)hwnd;
+void * VF::Window::Win32Window::GetWindowHandle() {
+	return hwnd;
 }
 
 VF::Input::Keys::Key TranslateExtended(WPARAM wParam, LPARAM lParam) {
@@ -71,7 +71,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	VF::Window::IWindowManager * windowManager = (VF::Window::IWindowManager *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
 	VF::Window::IWindow * window = nullptr;
 	if (windowManager != nullptr) {
-		window = windowManager->GetWindowByHandle((long)hwnd);
+		window = windowManager->GetWindowByHandle(hwnd);
 	}
 
 	switch (msg)
@@ -100,7 +100,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		keyState[translatedKey] = state;
 		if (windowManager->keyPressEvent != nullptr) {
 			VF::Input::KeyboardState keyboardState;
-			VF::Input::Keyboard::GetState(windowManager->GetWindowByHandle((long)hwnd), keyboardState);
+			VF::Input::Keyboard::GetState(windowManager->GetWindowByHandle(hwnd), keyboardState);
 			windowManager->keyPressEvent(window, keyboardState);
 		}
 		break;
@@ -115,7 +115,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		mouseData->position.y = point.y;
 		if (windowManager->mouseMoveEvent != nullptr) {
 			VF::Input::MouseState mouseState;
-			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle((long)hwnd), mouseState);
+			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle(&hwnd), mouseState);
 			windowManager->mouseMoveEvent(window, mouseState);
 		}
 		break;
@@ -139,7 +139,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		if (GET_XBUTTON_WPARAM(wParam) == XBUTTON2) { mouseData->XButton2 = buttonState; }
 		if (windowManager->mouseButtonEvent != nullptr) {
 			VF::Input::MouseState mouseState;
-			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle((long)hwnd), mouseState);
+			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle(hwnd), mouseState);
 			windowManager->mouseButtonEvent(window, mouseState);
 		}
 		break;
@@ -149,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		mouseData->scrollWheelValue = (int)((SHORT)HIWORD(wParam) / (double) WHEEL_DELTA);
 		if (windowManager->mouseWheelEvent != nullptr) {
 			VF::Input::MouseState mouseState;
-			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle((long)hwnd), mouseState);
+			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle(hwnd), mouseState);
 			windowManager->mouseWheelEvent(window, mouseState);
 		}
 		break;
@@ -159,7 +159,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		mouseData->scrollWheelValue = (int)-((SHORT)HIWORD(wParam) / (double)WHEEL_DELTA);
 		if (windowManager->mouseWheelEvent != nullptr) {
 			VF::Input::MouseState mouseState;
-			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle((long)hwnd), mouseState);
+			VF::Input::Mouse::GetState(windowManager->GetWindowByHandle(hwnd), mouseState);
 			windowManager->mouseWheelEvent(window, mouseState);
 		}
 		break;

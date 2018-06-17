@@ -13,7 +13,7 @@ namespace VF {
 			virtual void RemoveWindow(IWindow * window) = 0;
 			virtual void PollForEvents() = 0;
 			virtual void ShutDown() = 0;
-			virtual IWindow * GetWindowByHandle(long handlePtr) = 0;
+			virtual IWindow * GetWindowByHandle(void * handlePtr) = 0;
 			std::function<void(IWindow * window, VF::Input::KeyboardState state)> keyPressEvent;
 			std::function<void(IWindow * window, VF::Input::MouseState mouseState)> mouseMoveEvent;
 			std::function<void(IWindow * window, VF::Input::MouseState mouseState)> mouseButtonEvent;

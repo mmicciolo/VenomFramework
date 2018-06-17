@@ -12,7 +12,7 @@ namespace VF {
 			void RemoveWindow(IWindow * window);
 			void PollForEvents();
 			void ShutDown();
-			IWindow * GetWindowByHandle(long handlePtr);
+			IWindow * GetWindowByHandle(void * handlePtr);
 		protected:
 		private:
 		};

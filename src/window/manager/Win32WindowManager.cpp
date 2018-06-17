@@ -36,7 +36,7 @@ void VF::Window::Win32WindowManager::ShutDown() {
 	}
 }
 
-VF::Window::IWindow * VF::Window::Win32WindowManager::GetWindowByHandle(long handlePtr) {
+VF::Window::IWindow * VF::Window::Win32WindowManager::GetWindowByHandle(void * handlePtr) {
 	for (size_t i = 0; i < windows.size(); i++) {
 		if (windows.at(i)->GetWindowHandle() == handlePtr) {
 			return windows.at(i);

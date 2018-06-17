@@ -1,9 +1,8 @@
-#ifndef __BASIC_EFFECT_
-#define __BASIC_EFFECT_
+#ifndef __BASIC_EFFECT_H_
+#define __BASIC_EFFECT_H_
 
-#include "../IEffect.h"
-#include "../../shader/IShader.h"
-#include "../../device/IGraphicsDevice.h"
+#include "../Effect.h"
+#include "../../shader/Shader.h"
 #include "../../../math/Math.h"
 
 namespace VF {
@@ -13,13 +12,11 @@ namespace VF {
 			VF::Math::Matrix4 view;
 			VF::Math::Matrix4  projection;
 		};
-		class BasicEffect : public IEffect {
+		class BasicEffect : public Effect {
 		public:
-			BasicEffect(IGraphicsDevice * graphicsDevice);
-			void Apply();
+			BasicEffect();
 			BasicEffectParameters parameters;
-			IShader * vertexShader;
-			IShader * pixelShader;
+			void Apply();
 		protected:
 			void SetupShaders();
 		private:

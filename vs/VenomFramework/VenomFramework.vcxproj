@@ -69,16 +69,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Matt\Desktop\bgfx\bx\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Matt\Desktop\bgfx\bgfx\.build\win32_vs2017\bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>bgfxDebug.lib;bxDebug.lib;bimgDebug.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,30 +124,18 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\camera\Camera.h" />
     <ClInclude Include="..\..\src\camera\FirstPersonCamera.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\BufferUsage.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\IIndexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\InputLayout.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexBuffer.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexDeclaration.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexElement.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\IVertexType.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexElementFormat.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexElementUsage.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h" />
-    <ClInclude Include="..\..\src\graphics\device\DirectX11GraphicsDevice.h" />
     <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h" />
-    <ClInclude Include="..\..\src\graphics\device\IGraphicsDevice.h" />
-    <ClInclude Include="..\..\src\graphics\effect\basiceffect\BasicEffect.h" />
-    <ClInclude Include="..\..\src\graphics\effect\IEffect.h" />
-    <ClInclude Include="..\..\src\graphics\shader\DirectX11Shader.h" />
-    <ClInclude Include="..\..\src\graphics\shader\IShader.h" />
+    <ClInclude Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.h" />
+    <ClInclude Include="..\..\src\graphics\effect\Effect.h" />
+    <ClInclude Include="..\..\src\graphics\model\Model.h" />
+    <ClInclude Include="..\..\src\graphics\model\ModelMesh.h" />
+    <ClInclude Include="..\..\src\graphics\model\ModelMeshPart.h" />
     <ClInclude Include="..\..\src\graphics\shader\Shader.h" />
-    <ClInclude Include="..\..\src\graphics\shader\ShaderType.h" />
     <ClInclude Include="..\..\src\graphics\viewport\Viewport.h" />
     <ClInclude Include="..\..\src\input\keyboard\Keyboard.h" />
     <ClInclude Include="..\..\src\input\keyboard\KeyboardState.h" />
@@ -172,14 +164,18 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\camera\Camera.cpp" />
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\DirectX11IndexBuffer.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\DirectX11VertexBuffer.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\InputLayout.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp" />
+    <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
-    <ClCompile Include="..\..\src\graphics\device\DirectX11GraphicsDevice.cpp" />
-    <ClCompile Include="..\..\src\graphics\effect\basiceffect\BasicEffect.cpp" />
-    <ClCompile Include="..\..\src\graphics\shader\DirectX11Shader.cpp" />
+    <ClCompile Include="..\..\src\graphics\device\GraphicsDevice.cpp" />
+    <ClCompile Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.cpp" />
+    <ClCompile Include="..\..\src\graphics\effect\Effect.cpp" />
+    <ClCompile Include="..\..\src\graphics\model\Model.cpp" />
+    <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp" />
+    <ClCompile Include="..\..\src\graphics\model\ModelMeshPart.cpp" />
+    <ClCompile Include="..\..\src\graphics\shader\Shader.cpp" />
     <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp" />

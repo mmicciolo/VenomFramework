@@ -1,14 +1,23 @@
-#ifndef __INDEX_BUFFER_
-#define __INDEX_BUFFER_
+#ifndef __INDEX_BUFFER_H_
+#define __INDEX_BUFFER_H_
 
-#include "../../platform/platform.h"
-#include "DirectX11IndexBuffer.h"
+#include <bgfx\bgfx.h>
 
 namespace VF {
 	namespace Graphics {
-#ifdef WINDOWS
-		typedef VF::Graphics::DirectX11IndexBuffer IndexBuffer;
-#endif
+		class GraphicsDevice;
+		class IndexBuffer {
+		public:
+			IndexBuffer(GraphicsDevice * graphicsDevice, int indexCount);
+			void SetData(unsigned int * indices);
+			int GetIndexCount() { return indexCount; }
+			void SetBuffer();
+		protected:
+		private:
+			GraphicsDevice * graphicsDevice;
+			bgfx::IndexBufferHandle indexBuffer;
+			int indexCount;
+		};
 	}
 }
 

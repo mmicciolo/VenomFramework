@@ -2,15 +2,15 @@
 #include "../../graphics/buffer/VertexPosition/VertexPosition.h"
 #include "../../graphics/buffer/VertexPositionColor/VertexPositionColor.h"
 
-VF::Graphics::VertexBuffer * CreateVertexBuffer2(VF::Graphics::IGraphicsDevice * graphicsDevice) {
-	VF::Graphics::IVertexType ** vertices = new VF::Graphics::IVertexType*[6];
-	vertices[0] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(0.5f, 1.0f, 1.0f, 1.0f)));
+VF::Graphics::VertexBuffer * CreateVertexBuffer2(VF::Graphics::GraphicsDevice * graphicsDevice) {
+	VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[6];
+	vertices[0] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(0.5f, 1.0f, 1.0f, 1.0f)));
 	vertices[1] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
-	vertices[2] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)));
-	vertices[3] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
-	vertices[4] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
+	vertices[2] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)));
+	vertices[3] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, 200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
+	vertices[4] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
 	vertices[5] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(200.0f, -200.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)));
-	VF::Graphics::VertexBuffer * vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 6, vertices[0]->GetVertexDecleration(), VF::Graphics::BufferUsage::Usage::WriteOnly);
+	VF::Graphics::VertexBuffer * vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 6, new VF::Graphics::VertexPositionColor());
 	vertexBuffer->SetData(vertices);
 	return vertexBuffer;
 }
@@ -33,11 +33,12 @@ void Test6Camera::Init() {
 	windowManager = new VF::Window::WindowManager();
 	window = new VF::Window::Window(640, 480, "Test 6 Camera");
 	windowManager->AddWindow(window);
-	graphicsDevice = new VF::Graphics::GraphicsDevice(window);
+	VF::Graphics::Viewport viewPort;
+	graphicsDevice = new VF::Graphics::GraphicsDevice(window, viewPort);
 	graphicsDevice->Init();
 	vertexBuffer = CreateVertexBuffer2(graphicsDevice);
 	SetupCamera();
-	basicEffect = new VF::Graphics::BasicEffect(graphicsDevice);
+	basicEffect = new VF::Graphics::BasicEffect();
 }
 
 void Test6Camera::Update() {

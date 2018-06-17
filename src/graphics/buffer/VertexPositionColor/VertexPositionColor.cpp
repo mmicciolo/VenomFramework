@@ -1,20 +1,22 @@
 #include "VertexPositionColor.h"
-#include "../IVertexDeclaration.h"
+#include <bgfx\bgfx.h>
 
 VF::Graphics::VertexPositionColor::VertexPositionColor() {
-
+	CreateVertexDeclaration();
 }
 
 VF::Graphics::VertexPositionColor::VertexPositionColor(VF::Math::Vector3 position, VF::Math::Vector4 color) {
 	this->position = position;
 	this->color = color;
+	CreateVertexDeclaration();
 }
 
-VF::Graphics::IVertexDecleration VF::Graphics::VertexPositionColor::GetVertexDecleration() {
-	std::vector<IVertexElement> * vertexElements = new std::vector<IVertexElement>();
-	vertexElements->push_back(*new IVertexElement(0, VertexElementFormat::Format::Vector3, VertexElementUsage::Usage::Position, 0));
-	vertexElements->push_back(*new IVertexElement(12, VertexElementFormat::Format::Vector4, VertexElementUsage::Usage::Color, 0));
-	return *new IVertexDecleration(*vertexElements);
+void VF::Graphics::VertexPositionColor::CreateVertexDeclaration() {
+	vertexDeclaration = new bgfx::VertexDecl();
+	vertexDeclaration->begin()
+		.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
+		.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Float, true)
+		.end();
 }
 
 void * VF::Graphics::VertexPositionColor::ToByteArray() {

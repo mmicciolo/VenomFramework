@@ -8,7 +8,7 @@
 #include "../../window/Window.h"
 #include "../../graphics/device/GraphicsDevice.h"
 #include "../../graphics/buffer/VertexBuffer.h"
-#include "../../graphics/effect/basiceffect/BasicEffect.h"
+#include "../../graphics/effect/BasicEffect/BasicEffect.h"
 #include <vector>
 
 class Test4VertexBuffer : public ITest {

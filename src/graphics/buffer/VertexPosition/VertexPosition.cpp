@@ -1,18 +1,20 @@
 #include "VertexPosition.h"
-#include "../IVertexDeclaration.h"
+#include <bgfx\bgfx.h>
 
 VF::Graphics::VertexPosition::VertexPosition() {
-
+	CreateVertexDeclaration();
 }
 
 VF::Graphics::VertexPosition::VertexPosition(VF::Math::Vector3 position) {
 	this->position = position;
+	CreateVertexDeclaration();
 }
 
-VF::Graphics::IVertexDecleration VF::Graphics::VertexPosition::GetVertexDecleration() {
-	std::vector<IVertexElement> * vertexElements = new std::vector<IVertexElement>();
-	vertexElements->push_back(* new IVertexElement(0, VertexElementFormat::Format::Vector3, VertexElementUsage::Usage::Position, 0));
-	return * new IVertexDecleration(*vertexElements);
+void VF::Graphics::VertexPosition::CreateVertexDeclaration() {
+	vertexDeclaration = new bgfx::VertexDecl();
+	vertexDeclaration->begin()
+		.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
+		.end();
 }
 
 void * VF::Graphics::VertexPosition::ToByteArray() {

@@ -1,21 +1,18 @@
 #include "BasicEffect.h"
 #include "../../shader/Shader.h"
 
-VF::Graphics::BasicEffect::BasicEffect(IGraphicsDevice * graphicsDevice) {
-	this->graphicsDevice = graphicsDevice;
+#include <bgfx\bgfx.h>
+#include <bx\math.h>
+
+VF::Graphics::BasicEffect::BasicEffect() {
 	SetupShaders();
 }
 
 void VF::Graphics::BasicEffect::SetupShaders() {
-	vertexShader = new Shader(graphicsDevice, VF::Graphics::ShaderType::Type::VERTEX, "BasicEffect.hlsl");
-	pixelShader = new Shader(graphicsDevice, VF::Graphics::ShaderType::Type::PIXEL, "BasicEffect.hlsl");
-	vertexShader->CreateConstantBuffer(sizeof(parameters));
-	shaders.push_back(vertexShader);
-	shaders.push_back(pixelShader);
+	shader = new Shader("vs2.bin", "ps2.bin");
 }
 
 void VF::Graphics::BasicEffect::Apply() {
-	vertexShader->UpdateConstantBuffer(&parameters);
-	vertexShader->Render();
-	pixelShader->Render();
+	bgfx::setViewTransform(0, &parameters.view, &parameters.projection);;
+	bgfx::setTransform(&parameters.world);
 }
