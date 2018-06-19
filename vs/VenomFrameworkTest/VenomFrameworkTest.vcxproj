@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Users\Matt\source\repos\VenomFramework\vs\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Matt\Desktop\assimp-master\lib\Debug;C:\Users\Matt\source\repos\VenomFramework\vs\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Matt\Desktop\assimp-master\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -90,7 +90,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>VenomFramework.lib;d3d11.lib;D3DCompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>VenomFramework.lib;d3d11.lib;D3DCompiler.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\test\Test6 (Camera)\Test6Camera.cpp" />
     <ClCompile Include="..\..\src\test\Test7 (Model)\Test7Model.cpp" />
+    <ClCompile Include="..\..\src\test\Test8 (Content)\Test8Content.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\test\ITest.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="..\..\src\test\Test5 (IndexBuffer)\Test5IndexBuffer.h" />
     <ClInclude Include="..\..\src\test\Test6 (Camera)\Test6Camera.h" />
     <ClInclude Include="..\..\src\test\Test7 (Model)\Test7Model.h" />
+    <ClInclude Include="..\..\src\test\Test8 (Content)\Test8Content.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

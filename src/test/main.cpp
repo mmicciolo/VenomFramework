@@ -8,6 +8,7 @@
 #include "Test5 (IndexBuffer)\Test5IndexBuffer.h"
 #include "Test6 (Camera)\Test6Camera.h"
 #include "Test7 (Model)\Test7Model.h"
+#include "Test8 (Content)\Test8Content.h"
 
 namespace TestTypes {
 	enum Types {
@@ -17,13 +18,14 @@ namespace TestTypes {
 		Test4VertexBuffer,
 		Test5IndexBuffer,
 		Test6Camera,
-		Test7Model
+		Test7Model,
+		Test8Content
 	};
 }
 
 
 std::vector<ITest *> tests;
-TestTypes::Types testType = TestTypes::Test7Model;
+TestTypes::Types testType = TestTypes::Test4VertexBuffer;
 
 void SetupTests() {
 	tests.push_back(new Test1Window());
@@ -33,6 +35,7 @@ void SetupTests() {
 	tests.push_back(new Test5IndexBuffer());
 	tests.push_back(new Test6Camera());
 	tests.push_back(new Test7Model());
+	tests.push_back(new Test8Content());
 }
 
 int main() {

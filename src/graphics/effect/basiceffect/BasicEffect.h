@@ -7,7 +7,17 @@
 
 namespace VF {
 	namespace Graphics {
+		enum VertexDeclarationEnum {
+			Position,
+			PositionColor,
+			PositionColorTexture,
+			PositionNormalTexture,
+			PositionTexture
+		};
 		struct BasicEffectParameters {
+			VertexDeclarationEnum vertexDeclaration;
+			VF::Math::Vector4 diffuseColor;
+			VF::Math::Vector4 specularColor;
 		};
 		class BasicEffect : public Effect {
 		public:

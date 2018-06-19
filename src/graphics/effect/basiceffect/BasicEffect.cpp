@@ -9,11 +9,15 @@ VF::Graphics::BasicEffect::BasicEffect() {
 }
 
 void VF::Graphics::BasicEffect::SetupShaders() {
-	shader = new Shader("vs2.bin", "ps2.bin");
+	shader = new Shader("BasicEffectVS.bin", "BasicEffectPS.bin");
+	shader->CreateUniform("vertexDeclaration", bgfx::UniformType::Enum::Int1);
+	shader->CreateUniform("diffuseColor", bgfx::UniformType::Enum::Vec4);
+	shader->CreateUniform("specularColor", bgfx::UniformType::Enum::Vec4);
 }
 
 void VF::Graphics::BasicEffect::Apply() {
-	//bgfx::setViewTransform(0, &parameters.view, &parameters.projection);;
-	//bgfx::setTransform(&parameters.world);
 	Effect::Apply();
+	shader->SetUniform("vertexDeclaration", &parameters.vertexDeclaration);
+	shader->SetUniform("diffuseColor", &parameters.diffuseColor);
+	shader->SetUniform("specularColor", &parameters.specularColor);
 }

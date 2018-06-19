@@ -14,7 +14,7 @@ namespace VF {
 		class Effect {
 		public:
 			Shader * GetShader() { return shader;  }
-			void Apply();
+			virtual void Apply();
 			ProjectionViewWorld projectionViewWorld;
 		protected:
 			Shader * shader;

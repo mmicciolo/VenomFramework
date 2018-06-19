@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Matt\Desktop\bgfx\bx\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Matt\Desktop\bgfx\bgfx\.build\win32_vs2017\bin;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Matt\Desktop\assimp-master\include;C:\Users\Matt\Desktop\bgfx\bx\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Matt\Desktop\assimp-master\lib\Debug;C:\Users\Matt\Desktop\bgfx\bgfx\.build\win32_vs2017\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,7 +82,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>bgfxDebug.lib;bxDebug.lib;bimgDebug.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>bgfxDebug.lib;bxDebug.lib;bimgDebug.lib;psapi.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,6 +124,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\camera\Camera.h" />
     <ClInclude Include="..\..\src\camera\FirstPersonCamera.h" />
+    <ClInclude Include="..\..\src\content\Content.h" />
+    <ClInclude Include="..\..\src\content\ContentLoader.h" />
+    <ClInclude Include="..\..\src\content\ModelContentLoader.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h" />
@@ -164,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\camera\Camera.cpp" />
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp" />
+    <ClCompile Include="..\..\src\content\ModelContentLoader.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp" />
