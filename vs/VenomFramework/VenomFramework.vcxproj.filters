@@ -64,6 +64,15 @@
     <Filter Include="graphics\model">
       <UniqueIdentifier>{e037e269-7100-47f8-9d18-b804e9b499b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics\texture">
+      <UniqueIdentifier>{7b7da8e6-0fcd-455e-a723-474a61d66ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer\VertexPositionTexture">
+      <UniqueIdentifier>{79f3c3d0-f8b8-4d35-89af-977e857442a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\buffer\VertexPositionNormalTexture">
+      <UniqueIdentifier>{46c689bf-fc8f-433a-a892-2868b6e9be85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -189,6 +198,18 @@
     <ClInclude Include="..\..\src\content\ModelContentLoader.h">
       <Filter>content</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\texture\Texture.h">
+      <Filter>graphics\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\texture\Texture2D.h">
+      <Filter>graphics\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.h">
+      <Filter>graphics\buffer\VertexPositionTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.h">
+      <Filter>graphics\buffer\VertexPositionNormalTexture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -262,6 +283,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\content\ModelContentLoader.cpp">
       <Filter>content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.cpp">
+      <Filter>graphics\buffer\VertexPositionTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.cpp">
+      <Filter>graphics\buffer\VertexPositionNormalTexture</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
