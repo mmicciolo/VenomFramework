@@ -3,7 +3,6 @@
 #include "../../graphics/buffer/IndexBuffer.h"
 #include "../../graphics/model/Model.h"
 #include "../../graphics/model/ModelMesh.h"
-#include "../../graphics/model/ModelMeshPart.h"
 #include "../../content/Content.h"
 #include "../../content/ModelContentLoader.h"
 

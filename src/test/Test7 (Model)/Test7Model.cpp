@@ -3,7 +3,6 @@
 #include "../../graphics/buffer/IndexBuffer.h"
 #include "../../graphics/model/Model.h"
 #include "../../graphics/model/ModelMesh.h"
-#include "../../graphics/model/ModelMeshPart.h"
 
 void Test7Model::CreateVertexBuffer() {
 	VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[4];
@@ -34,12 +33,7 @@ void Test7Model::CreateEffect() {
 }
 
 void Test7Model::CreateModel() {
-	VF::Graphics::ModelMeshPart * modelMeshPart = new VF::Graphics::ModelMeshPart();
-	modelMeshPart->vertexBuffer = vertexBuffer;
-	modelMeshPart->indexBuffer = indexBuffer;
-	modelMeshPart->effect = basicEffect;
-	std::vector<VF::Graphics::ModelMeshPart *> modelMeshParts; modelMeshParts.push_back(modelMeshPart);
-	VF::Graphics::ModelMesh * modelMesh = new VF::Graphics::ModelMesh(graphicsDevice, modelMeshParts);
+	VF::Graphics::ModelMesh * modelMesh = new VF::Graphics::ModelMesh(graphicsDevice, vertexBuffer, indexBuffer, basicEffect);
 	std::vector<VF::Graphics::ModelMesh *> modelMeshes; modelMeshes.push_back(modelMesh);
 	model = new VF::Graphics::Model(graphicsDevice, modelMeshes);
 }

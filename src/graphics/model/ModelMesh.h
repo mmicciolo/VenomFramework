@@ -6,13 +6,17 @@
 namespace VF {
 	namespace Graphics {
 		class GraphicsDevice;
-		class ModelMeshPart;
+		class VertexBuffer;
+		class IndexBuffer;
+		class Effect;
 		class ModelMesh {
 		public:
 			ModelMesh(GraphicsDevice * graphicsDevice);
-			ModelMesh(GraphicsDevice * graphicsDevice, std::vector<ModelMeshPart *> modelMeshParts);
+			ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer * vertexBuffer, IndexBuffer * indexBuffer, Effect * effect);
+			VertexBuffer * vertexBuffer;
+			IndexBuffer * indexBuffer;
+			Effect * effect;
 			void Draw();
-			std::vector<ModelMeshPart *> modelMeshParts;
 		protected:
 		private:
 			GraphicsDevice * graphicsDevice;

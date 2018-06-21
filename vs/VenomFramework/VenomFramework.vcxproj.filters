@@ -168,9 +168,6 @@
     <ClInclude Include="..\..\src\graphics\model\ModelMesh.h">
       <Filter>graphics\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\model\ModelMeshPart.h">
-      <Filter>graphics\model</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\content\Content.h">
       <Filter>content</Filter>
     </ClInclude>
@@ -249,9 +246,6 @@
       <Filter>graphics\model</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp">
-      <Filter>graphics\model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\model\ModelMeshPart.cpp">
       <Filter>graphics\model</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\content\ModelContentLoader.cpp">

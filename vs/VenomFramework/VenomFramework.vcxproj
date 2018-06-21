@@ -136,7 +136,6 @@
     <ClInclude Include="..\..\src\graphics\effect\Effect.h" />
     <ClInclude Include="..\..\src\graphics\model\Model.h" />
     <ClInclude Include="..\..\src\graphics\model\ModelMesh.h" />
-    <ClInclude Include="..\..\src\graphics\model\ModelMeshPart.h" />
     <ClInclude Include="..\..\src\graphics\shader\Shader.h" />
     <ClInclude Include="..\..\src\graphics\texture\Texture.h" />
     <ClInclude Include="..\..\src\graphics\texture\Texture2D.h" />
@@ -177,7 +176,6 @@
     <ClCompile Include="..\..\src\graphics\effect\Effect.cpp" />
     <ClCompile Include="..\..\src\graphics\model\Model.cpp" />
     <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp" />
-    <ClCompile Include="..\..\src\graphics\model\ModelMeshPart.cpp" />
     <ClCompile Include="..\..\src\graphics\shader\Shader.cpp" />
     <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
