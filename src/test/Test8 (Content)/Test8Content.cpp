@@ -27,7 +27,7 @@ void Test8Content::Init() {
 	monitor = monitorManager->GetPrimaryMonitor();
 	monitors = monitorManager->GetMonitors();
 	windowManager = new VF::Window::WindowManager();
-	window = new VF::Window::Window(640, 480, "Test 6 Camera");
+	window = new VF::Window::Window(640, 480, "Test 8 Content");
 	windowManager->AddWindow(window);
 	VF::Graphics::Viewport viewPort;
 	graphicsDevice = new VF::Graphics::GraphicsDevice(window, viewPort);

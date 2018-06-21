@@ -60,7 +60,7 @@ void Test7Model::Init() {
 	monitor = monitorManager->GetPrimaryMonitor();
 	monitors = monitorManager->GetMonitors();
 	windowManager = new VF::Window::WindowManager();
-	window = new VF::Window::Window(640, 480, "Test 6 Camera");
+	window = new VF::Window::Window(640, 480, "Test 7 Model");
 	windowManager->AddWindow(window);
 	VF::Graphics::Viewport viewPort;
 	graphicsDevice = new VF::Graphics::GraphicsDevice(window, viewPort);
