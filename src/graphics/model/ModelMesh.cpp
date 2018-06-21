@@ -13,5 +13,10 @@ VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer
 }
 
 void VF::Graphics::ModelMesh::Draw() {
-	graphicsDevice->DrawIndexedPrimitives(vertexBuffer, indexBuffer, effect);
+	if (indexBuffer == nullptr) {
+		graphicsDevice->DrawPrimitives(vertexBuffer, effect);
+	}
+	else {
+		graphicsDevice->DrawIndexedPrimitives(vertexBuffer, indexBuffer, effect);
+	}
 }

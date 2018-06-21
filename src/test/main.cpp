@@ -25,7 +25,7 @@ namespace TestTypes {
 
 
 std::vector<ITest *> tests;
-TestTypes::Types testType = TestTypes::Test7Model;
+TestTypes::Types testType = TestTypes::Test8Content;
 
 void SetupTests() {
 	tests.push_back(new Test1Window());
