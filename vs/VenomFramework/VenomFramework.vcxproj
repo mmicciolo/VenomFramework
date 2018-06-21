@@ -130,10 +130,7 @@
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.h" />
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h" />
+    <ClInclude Include="..\..\src\graphics\buffer\VertexElement.h" />
     <ClInclude Include="..\..\src\graphics\device\GraphicsDevice.h" />
     <ClInclude Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.h" />
     <ClInclude Include="..\..\src\graphics\effect\Effect.h" />
@@ -175,10 +172,6 @@
     <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.cpp" />
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp" />
     <ClCompile Include="..\..\src\graphics\device\GraphicsDevice.cpp" />
     <ClCompile Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.cpp" />
     <ClCompile Include="..\..\src\graphics\effect\Effect.cpp" />

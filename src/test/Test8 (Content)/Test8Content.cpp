@@ -1,6 +1,5 @@
 #include "Test8Content.h"
-#include "../../graphics/buffer/VertexPosition/VertexPosition.h"
-#include "../../graphics/buffer/VertexPositionColor/VertexPositionColor.h"
+#include "../../graphics/buffer/VertexDeclaration.h"
 #include "../../graphics/buffer/IndexBuffer.h"
 #include "../../graphics/model/Model.h"
 #include "../../graphics/model/ModelMesh.h"

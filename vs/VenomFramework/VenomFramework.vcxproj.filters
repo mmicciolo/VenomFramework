@@ -46,9 +46,6 @@
     <Filter Include="graphics\buffer">
       <UniqueIdentifier>{960ca14b-297c-4dc3-883e-73b3bd706620}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\buffer\VertexPosition">
-      <UniqueIdentifier>{8219b8a9-93fc-4535-bb39-455b747e1b28}</UniqueIdentifier>
-    </Filter>
     <Filter Include="graphics\shader">
       <UniqueIdentifier>{608fa0dd-be19-4936-b055-e094fa6c3832}</UniqueIdentifier>
     </Filter>
@@ -58,20 +55,11 @@
     <Filter Include="graphics\effect\BasicEffect">
       <UniqueIdentifier>{dd85ecb9-4a0a-48d8-818f-6202a0950814}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\buffer\VertexPositionColor">
-      <UniqueIdentifier>{db4c03b2-9089-4267-97a8-29a29bde38bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="graphics\model">
       <UniqueIdentifier>{e037e269-7100-47f8-9d18-b804e9b499b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="graphics\texture">
       <UniqueIdentifier>{7b7da8e6-0fcd-455e-a723-474a61d66ec7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\buffer\VertexPositionTexture">
-      <UniqueIdentifier>{79f3c3d0-f8b8-4d35-89af-977e857442a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="graphics\buffer\VertexPositionNormalTexture">
-      <UniqueIdentifier>{46c689bf-fc8f-433a-a892-2868b6e9be85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +153,6 @@
     <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h">
       <Filter>graphics\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.h">
-      <Filter>graphics\buffer\VertexPosition</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\graphics\shader\Shader.h">
       <Filter>graphics\shader</Filter>
     </ClInclude>
@@ -176,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.h">
       <Filter>graphics\effect\BasicEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.h">
-      <Filter>graphics\buffer\VertexPositionColor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\graphics\model\Model.h">
       <Filter>graphics\model</Filter>
@@ -204,11 +186,8 @@
     <ClInclude Include="..\..\src\graphics\texture\Texture2D.h">
       <Filter>graphics\texture</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.h">
-      <Filter>graphics\buffer\VertexPositionTexture</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.h">
-      <Filter>graphics\buffer\VertexPositionNormalTexture</Filter>
+    <ClInclude Include="..\..\src\graphics\buffer\VertexElement.h">
+      <Filter>graphics\buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -257,9 +236,6 @@
     <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp">
       <Filter>graphics\buffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPosition\VertexPosition.cpp">
-      <Filter>graphics\buffer\VertexPosition</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\graphics\shader\Shader.cpp">
       <Filter>graphics\shader</Filter>
     </ClCompile>
@@ -268,9 +244,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.cpp">
       <Filter>graphics\effect\BasicEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionColor\VertexPositionColor.cpp">
-      <Filter>graphics\buffer\VertexPositionColor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\model\Model.cpp">
       <Filter>graphics\model</Filter>
@@ -283,12 +256,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\content\ModelContentLoader.cpp">
       <Filter>content</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionTexture\VertexPositionTexture.cpp">
-      <Filter>graphics\buffer\VertexPositionTexture</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\graphics\buffer\VertexPositionNormalTexture\VertexPositionNormalTexture.cpp">
-      <Filter>graphics\buffer\VertexPositionNormalTexture</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,16 +1,15 @@
 #include "Test4VertexBuffer.h"
-#include "../../graphics/buffer/VertexPosition/VertexPosition.h"
-#include "../../graphics/buffer/VertexPositionColor/VertexPositionColor.h"
+#include "../../graphics/buffer/VertexDeclaration.h"
 
 void Test4VertexBuffer::CreateVertexBuffer() {
 	VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[3];
-	vertices[0] = new VF::Graphics::VertexPosition(*(new VF::Math::Vector3(-1.0f, -1.0f, 0.0f)));
-	vertices[1] = new VF::Graphics::VertexPosition(*(new VF::Math::Vector3(0.0f, 1.0f, 0.0f)));
-	vertices[2] = new VF::Graphics::VertexPosition(*(new VF::Math::Vector3(1.0f, -1.0f, 0.0f)));
-	//vertices[0] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(-1.0f, -1.0f, 0.0f)), *(new VF::Math::Vector4(0.5f, 1.0f, 1.0f, 1.0f)));
-	//vertices[1] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(0.0f, 1.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)));
-	//vertices[2] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(1.0f, -1.0f, 0.0f)), *(new VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)));
-	vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 3, new VF::Graphics::VertexPositionColor());
+	vertices[0] = (new VF::Graphics::VertexDeclaration())->begin()->addVertexElement(new VF::Graphics::PositionVertexElement(VF::Math::Vector3(-1.0f, -1.0f, 0.0f)))
+		->addVertexElement(new VF::Graphics::ColorVertexElement(VF::Math::Vector4(0.5f, 1.0f, 1.0f, 1.0f)))->end();
+	vertices[1] = (new VF::Graphics::VertexDeclaration())->begin()->addVertexElement(new VF::Graphics::PositionVertexElement(VF::Math::Vector3(0.0f, 1.0f, 0.0f)))
+		->addVertexElement(new VF::Graphics::ColorVertexElement(VF::Math::Vector4(1.0f, 0.5f, 1.0f, 1.0f)))->end();
+	vertices[2] = (new VF::Graphics::VertexDeclaration())->begin()->addVertexElement(new VF::Graphics::PositionVertexElement(VF::Math::Vector3(1.0f, -1.0f, 0.0f)))
+		->addVertexElement(new VF::Graphics::ColorVertexElement(VF::Math::Vector4(1.0f, 1.0f, 0.5f, 1.0f)))->end();
+	vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, 3);
 	vertexBuffer->SetData(vertices);
 }
 

@@ -11,7 +11,6 @@
 #include "../graphics/model/ModelMeshPart.h"
 #include "../graphics/effect/BasicEffect/BasicEffect.h"
 #include "../graphics/buffer/VertexDeclaration.h"
-#include "../graphics/buffer/VertexPositionColor/VertexPositionColor.h"
 
 namespace VF {
 	namespace Content {
@@ -28,9 +27,9 @@ namespace VF {
 						float x = scene->mMeshes[i]->mVertices[v].x;
 						float y = scene->mMeshes[i]->mVertices[v].y;
 						float z = scene->mMeshes[i]->mVertices[v].z;
-						vertices[v] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(x, y, z)), *(new VF::Math::Vector4(1.0f, 1.0f, 1.0f, 1.0f)));
+						//vertices[v] = new VF::Graphics::VertexPositionColor(*(new VF::Math::Vector3(x, y, z)), *(new VF::Math::Vector4(1.0f, 1.0f, 1.0f, 1.0f)));
 					}
-					VF::Graphics::VertexBuffer * vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, scene->mMeshes[i]->mNumVertices, new VF::Graphics::VertexPositionColor());
+					VF::Graphics::VertexBuffer * vertexBuffer = new VF::Graphics::VertexBuffer(graphicsDevice, scene->mMeshes[i]->mNumVertices);
 					vertexBuffer->SetData(vertices);
 					unsigned int * indices = new unsigned int[scene->mMeshes[i]->mNumFaces * 3];
 					for (unsigned int f = 0; f < scene->mMeshes[i]->mNumFaces; f++) {

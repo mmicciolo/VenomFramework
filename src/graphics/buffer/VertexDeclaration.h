@@ -1,6 +1,9 @@
 #ifndef __VERTEX_DECLARATION_H_
 #define __VERTEX_DECLARATION_H_
 
+#include <vector>
+#include "VertexElement.h"
+
 namespace bgfx {
 	struct VertexDecl;
 }
@@ -9,12 +12,15 @@ namespace VF {
 	namespace Graphics {
 		class VertexDeclaration {
 		public:
-			virtual void CreateVertexDeclaration() = 0;
-			virtual void * ToByteArray() = 0;
-			virtual int GetVertexStride() = 0;
-			bgfx::VertexDecl * getVertexDeclaration() { return vertexDeclaration;  }
-		protected:
+			VertexDeclaration();
+			VertexDeclaration * begin();
+			VertexDeclaration * addVertexElement(VertexElement * element);
+			VertexDeclaration * end();
+			void * ToByteArray();
+			unsigned int GetVertexStride();
+			std::vector<VertexElement *> vertexElements;
 			bgfx::VertexDecl * vertexDeclaration;
+		protected:
 		private:
 		};
 	}

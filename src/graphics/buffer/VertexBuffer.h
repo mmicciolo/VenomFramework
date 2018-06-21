@@ -2,7 +2,6 @@
 #define __VERTEX_BUFFER_H_
 
 #include "../device/GraphicsDevice.h"
-#include "VertexDeclaration.h"
 
 #include <bgfx\bgfx.h>
 
@@ -12,9 +11,10 @@
 
 namespace VF {
 	namespace Graphics {
+		class VertexDeclaration;
 		class VertexBuffer {
 		public:
-			VertexBuffer(GraphicsDevice * graphicsDevice, int vertexCount, VertexDeclaration * vertexDecleration);
+			VertexBuffer(GraphicsDevice * graphicsDevice, int vertexCount);
 			void SetData(VertexDeclaration ** vertices);
 			void SetBuffer();
 		protected:
@@ -22,7 +22,6 @@ namespace VF {
 			GraphicsDevice * graphicsDevice;
 			bgfx::VertexBufferHandle vertexBuffer;
 			int vertexCount;
-			VertexDeclaration * vertexDecleration;
 		};
 	}
 }
