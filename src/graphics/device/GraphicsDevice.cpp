@@ -39,7 +39,7 @@ void VF::Graphics::GraphicsDevice::Present() {
 void VF::Graphics::GraphicsDevice::DrawPrimitives(VertexBuffer * vertexBuffer, Effect * effect) {
 	vertexBuffer->SetBuffer();
 
-	bgfx::setState(BGFX_STATE_DEFAULT);
+	bgfx::setState(BGFX_STATE_DEFAULT | BGFX_STATE_MSAA);
 
 	effect->Apply();
 

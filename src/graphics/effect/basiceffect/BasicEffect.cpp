@@ -13,6 +13,7 @@ void VF::Graphics::BasicEffect::SetupShaders() {
 	shader->CreateUniform("vertexDeclaration", bgfx::UniformType::Enum::Int1);
 	shader->CreateUniform("diffuseColor", bgfx::UniformType::Enum::Vec4);
 	shader->CreateUniform("specularColor", bgfx::UniformType::Enum::Vec4);
+	textureHandle = bgfx::createUniform("tex", bgfx::UniformType::Int1);
 }
 
 void VF::Graphics::BasicEffect::Apply() {
@@ -20,4 +21,5 @@ void VF::Graphics::BasicEffect::Apply() {
 	shader->SetUniform("vertexDeclaration", &parameters.vertexDeclaration);
 	shader->SetUniform("diffuseColor", &parameters.diffuseColor);
 	shader->SetUniform("specularColor", &parameters.specularColor);
+	bgfx::setTexture(0, textureHandle, parameters.texture.textureHandle);
 }

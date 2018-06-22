@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Matt\Desktop\assimp-master\include;C:\Users\Matt\Desktop\bgfx\bx\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Matt\Desktop\bgfx\bimg\include;C:\Users\Matt\Desktop\assimp-master\include;C:\Users\Matt\Desktop\bgfx\bx\include;C:\Users\Matt\Desktop\bgfx\bgfx\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Matt\Desktop\assimp-master\lib\Debug;C:\Users\Matt\Desktop\bgfx\bgfx\.build\win32_vs2017\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -82,7 +82,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>bgfxDebug.lib;bxDebug.lib;bimgDebug.lib;psapi.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>bgfxDebug.lib;bxDebug.lib;bimgDebug.lib;bimg_decodeDebug.lib;psapi.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -177,6 +177,7 @@
     <ClCompile Include="..\..\src\graphics\model\Model.cpp" />
     <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp" />
     <ClCompile Include="..\..\src\graphics\shader\Shader.cpp" />
+    <ClCompile Include="..\..\src\graphics\texture\Texture2D.cpp" />
     <ClCompile Include="..\..\src\graphics\viewport\Viewport.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\src\input\keyboard\KeyboardState.cpp" />

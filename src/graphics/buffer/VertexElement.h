@@ -8,7 +8,9 @@ namespace VF {
 
 		enum VertexElementType {
 			POSITION,
-			COLOR
+			COLOR,
+			NORMAL,
+			TEXTURECOORD
 		};
 
 		class VertexElement {
@@ -38,6 +40,26 @@ namespace VF {
 		protected:
 		private:
 			VF::Math::Vector4 color;
+		};
+
+		class NormalVertexElement : public VertexElement {
+		public:
+			NormalVertexElement(VF::Math::Vector3 normal) { this->normal = normal; vertexElementType = NORMAL; }
+			unsigned int GetSize() { return 12; }
+			void * GetData() { return &normal; }
+		protected:
+		private:
+			VF::Math::Vector3 normal;
+		};
+
+		class TextureVertexElement : public VertexElement {
+		public:
+			TextureVertexElement(VF::Math::Vector2 texcoord) { this->texcoord = texcoord; vertexElementType = TEXTURECOORD; }
+			unsigned int GetSize() { return 8; }
+			void * GetData() { return &texcoord; }
+		protected:
+		private:
+			VF::Math::Vector2 texcoord;
 		};
 	}
 }

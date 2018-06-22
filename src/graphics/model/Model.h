@@ -13,6 +13,7 @@ namespace VF {
 			Model(GraphicsDevice * graphicsDevice);
 			Model(GraphicsDevice * graphicsDevice, std::vector<ModelMesh *> modelMeshes);
 			void Draw(VF::Math::Matrix4 projection, VF::Math::Matrix4 view, VF::Math::Matrix4 world);
+			std::vector<ModelMesh *> GetModelMeshes() { return modelMeshes; }
 		protected:
 		private:
 			GraphicsDevice * graphicsDevice;

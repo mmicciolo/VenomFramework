@@ -19,6 +19,12 @@ VF::Graphics::VertexDeclaration * VF::Graphics::VertexDeclaration::addVertexElem
 	case COLOR:
 		vertexDeclaration->add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Float);
 		break;
+	case NORMAL:
+		vertexDeclaration->add(bgfx::Attrib::Normal, 3, bgfx::AttribType::Float, true, true);
+		break;
+	case TEXTURECOORD:
+		vertexDeclaration->add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float, true, true);
+		break;
 	}
 	return this;
 }

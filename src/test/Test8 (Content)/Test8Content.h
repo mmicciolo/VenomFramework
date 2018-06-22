@@ -13,6 +13,7 @@
 #include "../../input/keyboard/KeyboardState.h"
 #include "../../input/mouse/MouseState.h"
 #include "../../input/mouse/Mouse.h"
+#include "../../graphics/texture/Texture2D.h"
 #include <vector>
 
 namespace VF {
@@ -42,6 +43,7 @@ private:
 	VF::Input::KeyboardState keyboardState;
 	VF::Input::MouseState mouseState;
 	VF::Graphics::Model * model;
+	VF::Graphics::Texture2D * texture2D;
 };
 
 #endif

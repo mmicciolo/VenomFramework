@@ -7,7 +7,7 @@
 #include "../../content/ModelContentLoader.h"
 
 void Test8Content::LoadModel() {
-	model = VF::Content::Content::Load<VF::Graphics::Model, VF::Content::ModelContentLoader>("VWEAP.X", graphicsDevice);
+	model = VF::Content::Content::Load<VF::Graphics::Model, VF::Content::ModelContentLoader>("HUD.X", graphicsDevice);
 }
 
 void Test8Content::SetupCamera() {
