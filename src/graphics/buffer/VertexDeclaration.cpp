@@ -25,6 +25,12 @@ VF::Graphics::VertexDeclaration * VF::Graphics::VertexDeclaration::addVertexElem
 	case TEXTURECOORD:
 		vertexDeclaration->add(bgfx::Attrib::TexCoord0, 2, bgfx::AttribType::Float, true, true);
 		break;
+	case BONE_INDEX:
+		vertexDeclaration->add(bgfx::Attrib::Indices, 4, bgfx::AttribType::Float, true, true);
+		break;
+	case BONE_WEIGHT:
+		vertexDeclaration->add(bgfx::Attrib::Weight, 4, bgfx::AttribType::Float, true, true);
+		break;
 	}
 	return this;
 }

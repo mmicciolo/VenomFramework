@@ -10,7 +10,9 @@ namespace VF {
 			POSITION,
 			COLOR,
 			NORMAL,
-			TEXTURECOORD
+			TEXTURECOORD,
+			BONE_INDEX,
+			BONE_WEIGHT
 		};
 
 		class VertexElement {
@@ -60,6 +62,26 @@ namespace VF {
 		protected:
 		private:
 			VF::Math::Vector2 texcoord;
+		};
+
+		class BoneIndexVertexElement : public VertexElement {
+		public:
+			BoneIndexVertexElement(VF::Math::Vector4 boneIndex) { this->boneIndex = boneIndex; vertexElementType = BONE_INDEX; }
+			unsigned int GetSize() { return 16; }
+			void * GetData() { return &boneIndex; }
+		protected:
+		private:
+			VF::Math::Vector4 boneIndex;
+		};
+
+		class BoneWeightVertexElement : public VertexElement {
+		public:
+			BoneWeightVertexElement(VF::Math::Vector4 boneWeight) { this->boneWeight = boneWeight; vertexElementType = BONE_WEIGHT; }
+			unsigned int GetSize() { return 16; }
+			void * GetData() { return &boneWeight; }
+		protected:
+		private:
+			VF::Math::Vector4 boneWeight;
 		};
 	}
 }

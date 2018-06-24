@@ -31,11 +31,11 @@ void VF::Graphics::Shader::LoadShaders(std::string vsFilename, std::string psFil
 	programHandle = bgfx::createProgram(vsHandle, psHandle, true);
 }
 
-void VF::Graphics::Shader::CreateUniform(std::string name, bgfx::UniformType::Enum uniformType) {
-	uniforms[name] = bgfx::createUniform(name.c_str(), uniformType);
+void VF::Graphics::Shader::CreateUniform(std::string name, bgfx::UniformType::Enum uniformType, unsigned int number) {
+	uniforms[name] = bgfx::createUniform(name.c_str(), uniformType, number);
 	//uniforms.insert(name, handle);
 }
 
-void VF::Graphics::Shader::SetUniform(std::string name, void * value) {
-	bgfx::setUniform(uniforms[name], value);
+void VF::Graphics::Shader::SetUniform(std::string name, void * value, unsigned int number) {
+	bgfx::setUniform(uniforms[name], value, number);
 }

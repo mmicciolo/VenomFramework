@@ -2,6 +2,7 @@
 #define __MODEL_MESH_H_
 
 #include <vector>
+#include "ModelBone.h"
 
 namespace VF {
 	namespace Graphics {
@@ -9,6 +10,7 @@ namespace VF {
 		class VertexBuffer;
 		class IndexBuffer;
 		class Effect;
+		class ModelBone;
 		class ModelMesh {
 		public:
 			ModelMesh(GraphicsDevice * graphicsDevice);
@@ -16,6 +18,8 @@ namespace VF {
 			VertexBuffer * vertexBuffer;
 			IndexBuffer * indexBuffer;
 			Effect * effect;
+			std::vector<ModelBone> bones;
+			VF::Math::Matrix4 transform;
 			void Draw();
 		protected:
 		private:

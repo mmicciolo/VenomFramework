@@ -10,8 +10,8 @@ namespace VF {
 		class Shader {
 		public:
 			Shader(std::string vsFilename, std::string psFilename);
-			void CreateUniform(std::string name, bgfx::UniformType::Enum uniformType);
-			void SetUniform(std::string name, void * value);
+			void CreateUniform(std::string name, bgfx::UniformType::Enum uniformType, unsigned int number);
+			void SetUniform(std::string name, void * value, unsigned int number);
 			bgfx::ProgramHandle programHandle;
 		protected:
 		private:

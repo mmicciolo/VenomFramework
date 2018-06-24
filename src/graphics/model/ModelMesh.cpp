@@ -3,6 +3,7 @@
 
 VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice) {
 	this->graphicsDevice = graphicsDevice;
+	transform = VF::Math::Matrix4(1.0f);
 }
 
 VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer * vertexBuffer, IndexBuffer * indexBuffer, Effect * effect) {
@@ -10,13 +11,16 @@ VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer
 	this->vertexBuffer = vertexBuffer;
 	this->indexBuffer = indexBuffer;
 	this->effect = effect;
+	transform = VF::Math::Matrix4(1.0f);
 }
 
 void VF::Graphics::ModelMesh::Draw() {
+	effect->projectionViewWorld.world *= transform;
 	if (indexBuffer == nullptr) {
 		graphicsDevice->DrawPrimitives(vertexBuffer, effect);
 	}
 	else {
 		graphicsDevice->DrawIndexedPrimitives(vertexBuffer, indexBuffer, effect);
 	}
+
 }

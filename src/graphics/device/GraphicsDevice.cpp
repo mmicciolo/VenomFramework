@@ -39,7 +39,7 @@ void VF::Graphics::GraphicsDevice::Present() {
 void VF::Graphics::GraphicsDevice::DrawPrimitives(VertexBuffer * vertexBuffer, Effect * effect) {
 	vertexBuffer->SetBuffer();
 
-	bgfx::setState(BGFX_STATE_DEFAULT | BGFX_STATE_MSAA);
+	bgfx::setState(BGFX_STATE_DEFAULT);
 
 	effect->Apply();
 
@@ -49,6 +49,14 @@ void VF::Graphics::GraphicsDevice::DrawPrimitives(VertexBuffer * vertexBuffer, E
 void VF::Graphics::GraphicsDevice::DrawIndexedPrimitives(VertexBuffer * vertexBuffer, IndexBuffer * indexBuffer, Effect * effect) {
 	vertexBuffer->SetBuffer();
 	indexBuffer->SetBuffer();
+
+	uint64_t state = 0            
+		| BGFX_STATE_WRITE_RGB       
+		| BGFX_STATE_WRITE_A         
+		| BGFX_STATE_WRITE_Z         
+		| BGFX_STATE_DEPTH_TEST_LESS 
+		| BGFX_STATE_CULL_CCW         
+		| BGFX_STATE_MSAA;           
 
 	bgfx::setState(BGFX_STATE_DEFAULT);
 

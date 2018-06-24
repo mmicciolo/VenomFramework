@@ -135,6 +135,7 @@
     <ClInclude Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.h" />
     <ClInclude Include="..\..\src\graphics\effect\Effect.h" />
     <ClInclude Include="..\..\src\graphics\model\Model.h" />
+    <ClInclude Include="..\..\src\graphics\model\ModelBone.h" />
     <ClInclude Include="..\..\src\graphics\model\ModelMesh.h" />
     <ClInclude Include="..\..\src\graphics\shader\Shader.h" />
     <ClInclude Include="..\..\src\graphics\texture\Texture.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="..\..\src\graphics\effect\BasicEffect\BasicEffect.cpp" />
     <ClCompile Include="..\..\src\graphics\effect\Effect.cpp" />
     <ClCompile Include="..\..\src\graphics\model\Model.cpp" />
+    <ClCompile Include="..\..\src\graphics\model\ModelBone.cpp" />
     <ClCompile Include="..\..\src\graphics\model\ModelMesh.cpp" />
     <ClCompile Include="..\..\src\graphics\shader\Shader.cpp" />
     <ClCompile Include="..\..\src\graphics\texture\Texture2D.cpp" />
