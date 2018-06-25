@@ -127,6 +127,7 @@
     <ClInclude Include="..\..\src\content\Content.h" />
     <ClInclude Include="..\..\src\content\ContentLoader.h" />
     <ClInclude Include="..\..\src\content\ModelContentLoader.h" />
+    <ClInclude Include="..\..\src\graphics\animation\Animation.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="..\..\src\input\mouse\MouseState.h" />
     <ClInclude Include="..\..\src\math\Math.h" />
     <ClInclude Include="..\..\src\math\Matrix4.h" />
+    <ClInclude Include="..\..\src\math\Quaternion.h" />
     <ClInclude Include="..\..\src\math\Vector2.h" />
     <ClInclude Include="..\..\src\math\Vector3.h" />
     <ClInclude Include="..\..\src\math\Vector4.h" />
@@ -169,6 +171,7 @@
     <ClCompile Include="..\..\src\camera\Camera.cpp" />
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp" />
     <ClCompile Include="..\..\src\content\ModelContentLoader.cpp" />
+    <ClCompile Include="..\..\src\graphics\animation\Animation.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp" />

@@ -15,7 +15,7 @@ VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer
 }
 
 void VF::Graphics::ModelMesh::Draw() {
-	effect->projectionViewWorld.world *= transform;
+	//effect->projectionViewWorld.world *= transform;
 	if (indexBuffer == nullptr) {
 		graphicsDevice->DrawPrimitives(vertexBuffer, effect);
 	}

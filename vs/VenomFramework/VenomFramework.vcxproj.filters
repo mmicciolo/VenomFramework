@@ -61,6 +61,9 @@
     <Filter Include="graphics\texture">
       <UniqueIdentifier>{7b7da8e6-0fcd-455e-a723-474a61d66ec7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="graphics\animation">
+      <UniqueIdentifier>{210adbd2-345d-45a8-ba0d-cc66ce39404b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\window\IWindow.h">
@@ -189,6 +192,12 @@
     <ClInclude Include="..\..\src\graphics\model\ModelBone.h">
       <Filter>graphics\model</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\graphics\animation\Animation.h">
+      <Filter>graphics\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Quaternion.h">
+      <Filter>math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\window\monitor\Monitor.cpp">
@@ -259,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\graphics\model\ModelBone.cpp">
       <Filter>graphics\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\graphics\animation\Animation.cpp">
+      <Filter>graphics\animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

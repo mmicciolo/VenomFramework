@@ -18,7 +18,6 @@ void VF::Graphics::BasicEffect::SetupShaders() {
 }
 
 void VF::Graphics::BasicEffect::Apply() {
-	Effect::Apply();
 	if (parameters.bonesList.size() > 0) {
 		parameters.vertexDeclaration = VertexDeclarationEnum::Skinned;
 	}
@@ -28,7 +27,9 @@ void VF::Graphics::BasicEffect::Apply() {
 	for (int i = 0; i < parameters.bonesList.size(); i++) {
 		int index = parameters.boneIndexMap[parameters.bonesList[i].boneName];
 		//VF::Math::Matrix4 globalTrans = parameters.bonesList[i].parentTransform * parameters.bonesList[i].transform;
-		parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * parameters.bonesList[i].transform * parameters.bonesList[i].boneOffset;
+		//parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * parameters.bonesList[i].transform * parameters.bonesList[i].boneOffset;
+		VF::Math::Matrix4 nodeTransform = parameters.bonesList[i].parentTransform * parameters.bonesList[i].originalTransform;
+		parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * nodeTransform * parameters.bonesList[i].boneOffset;
 	}
 	for (int i = 0; i < 100; i++) {
 		//parameters.bones[i] = parameters.globalTransformation * VF::Math::inverse(parameters.globalTransformation) * VF::Math::Matrix4(1.0f);
@@ -36,4 +37,5 @@ void VF::Graphics::BasicEffect::Apply() {
 	}
 	shader->SetUniform("bones", &parameters.bones, 100);
 	bgfx::setTexture(0, textureHandle, parameters.texture.textureHandle);
+	Effect::Apply();
 }

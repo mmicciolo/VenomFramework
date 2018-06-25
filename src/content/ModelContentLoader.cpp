@@ -18,7 +18,7 @@ VF::Graphics::Model * VF::Content::ModelContentLoader::Import() {
 void VF::Content::ModelContentLoader::ImportScene() {
 	Assimp::Importer importer;
 	const aiScene * scene = importer.ReadFile(fileName, aiProcessPreset_TargetRealtime_Fast | aiProcess_MakeLeftHanded | aiProcess_FlipUVs);
-	BuildNodeTransformHierarchy(scene->mRootNode, VF::Math::Matrix4(1.0f));
+	BuildNodeTransformHierarchy(scene, scene->mRootNode, VF::Math::Matrix4(1.0f));
 	ImportMaterials(scene);
 	ImportNodes(scene);
 }
@@ -48,15 +48,15 @@ void VF::Content::ModelContentLoader::ImportNodes(const aiScene * scene, aiNode 
 	VF::Math::Matrix4 globalTransformation = parentTransform * assimpMatrixToVFMatrix(node->mTransformation);
 
 	if (node->mNumMeshes > 0) {
-		ImportBones(scene, scene->mMeshes[*node->mMeshes]);
-		VF::Graphics::ModelMesh * mesh = ImportMesh(scene->mMeshes[*node->mMeshes]);
+		BoneMaps * boneMaps = ImportBones(scene, node, scene->mMeshes[*node->mMeshes]);
+		VF::Graphics::ModelMesh * mesh = ImportMesh(scene->mMeshes[*node->mMeshes], boneMaps);
 		if (node->mParent == nullptr) {
 			mesh->transform = assimpMatrixToVFMatrix(node->mTransformation);
 		}
 		else {
 			//mesh->transform = assimpMatrixToVFMatrix(node->mTransformation) * assimpMatrixToVFMatrix(node->mParent->mTransformation);
-			//mesh->transform = nodeTransformHierarchy[node->mName.C_Str()];
-			mesh->transform = globalTransformation;
+			mesh->transform = nodeTransformHierarchy[node->mName.C_Str()];
+			//mesh->transform = globalTransformation;
 		}
 		modelMeshes.push_back(mesh);
 	}
@@ -66,7 +66,7 @@ void VF::Content::ModelContentLoader::ImportNodes(const aiScene * scene, aiNode 
 	}
 }
 
-VF::Graphics::ModelMesh * VF::Content::ModelContentLoader::ImportMesh(aiMesh * mesh) {
+VF::Graphics::ModelMesh * VF::Content::ModelContentLoader::ImportMesh(aiMesh * mesh, BoneMaps * boneMaps) {
 	VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[mesh->mNumVertices];
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 		vertices[i] = new VF::Graphics::VertexDeclaration();
@@ -103,7 +103,7 @@ VF::Graphics::ModelMesh * VF::Content::ModelContentLoader::ImportMesh(aiMesh * m
 				for (unsigned int n = 0; n < mesh->mBones[b]->mNumWeights; n++) {
 					if (mesh->mBones[b]->mWeights[n].mVertexId == i) {
 						weights.push_back(mesh->mBones[b]->mWeights[n].mWeight);
-						indices.push_back(boneIndexMap[std::string(mesh->mBones[b]->mName.data)]);
+						indices.push_back(boneMaps->boneIndexMap[std::string(mesh->mBones[b]->mName.data)]);
 					}
 				}
 			}
@@ -111,6 +111,10 @@ VF::Graphics::ModelMesh * VF::Content::ModelContentLoader::ImportMesh(aiMesh * m
 			indices.resize(4);
 			vertices[i]->addVertexElement(new VF::Graphics::BoneWeightVertexElement(VF::Math::Vector4(weights[0], weights[1], weights[2], weights[3])));
 			vertices[i]->addVertexElement(new VF::Graphics::BoneIndexVertexElement(VF::Math::Vector4(indices[0], indices[1], indices[2], indices[3])));
+		}
+		else {
+			vertices[i]->addVertexElement(new VF::Graphics::BoneWeightVertexElement(VF::Math::Vector4(1.0f, 0.0f, 0.0f, 0.0f)));
+			vertices[i]->addVertexElement(new VF::Graphics::BoneIndexVertexElement(VF::Math::Vector4(0, 0, 0, 0)));
 		}
 		vertices[i]->end();
 	}
@@ -137,25 +141,64 @@ VF::Graphics::ModelMesh * VF::Content::ModelContentLoader::ImportMesh(aiMesh * m
 		effect->parameters.texture = *textures[mesh->mMaterialIndex];
 	}
 
-	if (mesh->HasBones()) {
-		effect->parameters.bonesList = bones;
-		effect->parameters.boneIndexMap = boneIndexMap;
+	//if (mesh->HasBones()) {
+		effect->parameters.bonesList = boneMaps->bones;
+		effect->parameters.boneIndexMap = boneMaps->boneIndexMap;
 		effect->parameters.globalTransformation = VF::Math::Matrix4(1.0f);
-	}
+	//}
 
 	return new VF::Graphics::ModelMesh(graphicsDevice, vertexBuffer, indexBuffer, effect);
 }
 
-void VF::Content::ModelContentLoader::ImportBones(const aiScene * scene, aiMesh * mesh) {
+VF::Content::BoneMaps * VF::Content::ModelContentLoader::ImportBones(const aiScene * scene, aiNode * node, aiMesh * mesh) {
+	VF::Content::BoneMaps * boneMaps = new VF::Content::BoneMaps();
 	if (mesh->HasBones()) {
 		for (unsigned int i = 0; i < mesh->mNumBones; i++) {
-			if (boneIndexMap.find(std::string(mesh->mBones[i]->mName.data)) == boneIndexMap.end()) {
-				boneIndexMap[std::string(mesh->mBones[i]->mName.data)] = boneIndexMap.size();
-				bones.push_back(VF::Graphics::ModelBone(std::string(mesh->mBones[i]->mName.data), assimpMatrixToVFMatrix(mesh->mBones[i]->mOffsetMatrix)));
-				bones[bones.size() - 1].transform = nodeTransformHierarchy[std::string(mesh->mBones[i]->mName.data)];
+			if (boneMaps->boneIndexMap.find(std::string(mesh->mBones[i]->mName.data)) == boneMaps->boneIndexMap.end()) {
+				boneMaps->boneIndexMap[std::string(mesh->mBones[i]->mName.data)] = boneMaps->boneIndexMap.size();
+				boneMaps->bones.push_back(VF::Graphics::ModelBone(std::string(mesh->mBones[i]->mName.data), assimpMatrixToVFMatrix(mesh->mBones[i]->mOffsetMatrix)));
+				boneMaps->bones[boneMaps->bones.size() - 1].transform = nodeTransformHierarchy[std::string(mesh->mBones[i]->mName.data)];
+				boneMaps->bones[boneMaps->bones.size() - 1].originalTransform = nodeTransformsMap[std::string(mesh->mBones[i]->mName.data)].originalTransform;
+				boneMaps->bones[boneMaps->bones.size() - 1].parentTransform = nodeTransformsMap[std::string(mesh->mBones[i]->mName.data)].parentTransform;
+				boneMaps->bones[boneMaps->bones.size() - 1].animations = ImportAnimations(scene, nodeMap[mesh->mBones[i]->mName.data]);
 			}
 		}
 	}
+	else {
+		boneMaps->bones.push_back(VF::Graphics::ModelBone(std::string(node->mName.data), VF::Math::Matrix4(1.0f)));
+		boneMaps->bones[boneMaps->bones.size() - 1].transform = nodeTransformHierarchy[std::string(node->mName.data)];
+		boneMaps->bones[boneMaps->bones.size() - 1].originalTransform = nodeTransformsMap[std::string(node->mName.data)].originalTransform;
+		boneMaps->bones[boneMaps->bones.size() - 1].parentTransform = nodeTransformsMap[std::string(node->mName.data)].parentTransform;
+		boneMaps->bones[boneMaps->bones.size() - 1].animations = ImportAnimations(scene, nodeMap[node->mName.data]);
+	}
+	return boneMaps;
+}
+
+std::vector<VF::Graphics::Animation> VF::Content::ModelContentLoader::ImportAnimations(const aiScene * scene, aiNode * node) {
+	std::vector<VF::Graphics::Animation> animations;
+	if (scene->HasAnimations()) {
+		for (unsigned int i = 0; i < scene->mNumAnimations; i++) {
+			aiAnimation * animation = scene->mAnimations[i];
+			for (unsigned int i = 0; i < animation->mNumChannels; i++) {
+				aiNodeAnim* nodeAnim = animation->mChannels[i];
+				if (std::string(nodeAnim->mNodeName.data) == std::string(node->mName.C_Str())) {
+					VF::Graphics::Animation animation;
+					for (unsigned int n = 0; n < nodeAnim->mNumPositionKeys; n++) {
+						animation.translationKeys.push_back(VF::Graphics::TranslationKey(VF::Math::Vector3(nodeAnim->mPositionKeys[n].mValue.x, nodeAnim->mPositionKeys[n].mValue.y, nodeAnim->mPositionKeys[n].mValue.z), nodeAnim->mPositionKeys[n].mTime));
+					}
+					for (unsigned int n = 0; n < nodeAnim->mNumRotationKeys; n++) {
+						animation.rotationKeys.push_back(VF::Graphics::RotationKey(VF::Math::Quaternion(nodeAnim->mRotationKeys[n].mValue.x, nodeAnim->mRotationKeys[n].mValue.y, nodeAnim->mRotationKeys[n].mValue.z, nodeAnim->mRotationKeys[n].mValue.w), nodeAnim->mRotationKeys[n].mTime));
+					}
+					for (unsigned int n = 0; n < nodeAnim->mNumPositionKeys; n++) {
+						animation.scaleKeys.push_back(VF::Graphics::ScaleKey(VF::Math::Vector3(nodeAnim->mScalingKeys[n].mValue.x, nodeAnim->mScalingKeys[n].mValue.y, nodeAnim->mScalingKeys[n].mValue.z), nodeAnim->mScalingKeys[n].mTime));
+					}
+					animations.push_back(animation);
+					break;
+				}
+			}
+		}
+	}
+	return animations;
 }
 
 VF::Math::Matrix4 VF::Content::ModelContentLoader::assimpMatrixToVFMatrix(aiMatrix4x4 matrix) {
@@ -167,9 +210,31 @@ VF::Math::Matrix4 VF::Content::ModelContentLoader::assimpMatrixToVFMatrix(aiMatr
 	return *m44;
 }
 
-void VF::Content::ModelContentLoader::BuildNodeTransformHierarchy(aiNode * node, VF::Math::Matrix4 parentTransform) {
-	nodeTransformHierarchy[node->mName.C_Str()] = parentTransform * assimpMatrixToVFMatrix(node->mTransformation);
+void VF::Content::ModelContentLoader::BuildNodeTransformHierarchy(const aiScene * scene, aiNode * node, VF::Math::Matrix4 parentTransform) {
+	VF::Math::Matrix4 nodeTransform = assimpMatrixToVFMatrix(node->mTransformation);
+	//aiAnimation * animation = scene->mAnimations[0];
+	//aiNodeAnim * nodeAnim = nullptr;
+	//for (unsigned int i = 0; i < animation->mNumChannels; i++) {
+	//	aiNodeAnim* pNodeAnim = animation->mChannels[i];
+
+	//	if (std::string(pNodeAnim->mNodeName.data) == std::string(node->mName.C_Str())) {
+	//		nodeAnim = pNodeAnim;
+	//	}
+	//}
+	//int animKey = 0;
+	//if (nodeAnim != nullptr) {
+	//	VF::Math::Matrix4 position = VF::Math::translate(VF::Math::Matrix4(1.0f), VF::Math::Vector3(nodeAnim[0].mPositionKeys[animKey].mValue.x, nodeAnim[0].mPositionKeys[animKey].mValue.y, nodeAnim[0].mPositionKeys[animKey].mValue.z));
+	//	VF::Math::Matrix4 rotation(assimpMatrixToVFMatrix(aiMatrix4x4(nodeAnim[0].mRotationKeys[animKey].mValue.GetMatrix())));
+	//	nodeTransform = position * rotation;
+	//}
+	if (std::string(node->mName.data) == "") {
+		node->mName = std::string("NoName") + std::to_string(unamedNodeCount);
+		unamedNodeCount++;
+	}
+	nodeMap[std::string(node->mName.C_Str())] = node;
+	nodeTransformHierarchy[node->mName.C_Str()] = parentTransform * nodeTransform;
+	nodeTransformsMap[std::string(node->mName.C_Str())] = { assimpMatrixToVFMatrix(node->mTransformation), parentTransform };
 	for (unsigned int i = 0; i < node->mNumChildren; i++) {
-		BuildNodeTransformHierarchy(node->mChildren[i], nodeTransformHierarchy[node->mName.C_Str()]);
+		BuildNodeTransformHierarchy(scene, node->mChildren[i], nodeTransformHierarchy[node->mName.C_Str()]);
 	}
 }
