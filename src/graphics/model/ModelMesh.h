@@ -5,6 +5,12 @@
 #include "ModelBone.h"
 
 namespace VF {
+	namespace Content {
+		struct ModelNode;
+	}
+}
+
+namespace VF {
 	namespace Graphics {
 		class GraphicsDevice;
 		class VertexBuffer;
@@ -20,6 +26,7 @@ namespace VF {
 			Effect * effect;
 			std::vector<ModelBone> bones;
 			VF::Math::Matrix4 transform;
+			VF::Content::ModelNode * modelNode;
 			void Draw();
 		protected:
 		private:

@@ -128,6 +128,7 @@
     <ClInclude Include="..\..\src\content\ContentLoader.h" />
     <ClInclude Include="..\..\src\content\ModelContentLoader.h" />
     <ClInclude Include="..\..\src\graphics\animation\Animation.h" />
+    <ClInclude Include="..\..\src\graphics\animation\Animator.h" />
     <ClInclude Include="..\..\src\graphics\buffer\IndexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexBuffer.h" />
     <ClInclude Include="..\..\src\graphics\buffer\VertexDeclaration.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="..\..\src\camera\FirstPersonCamera.cpp" />
     <ClCompile Include="..\..\src\content\ModelContentLoader.cpp" />
     <ClCompile Include="..\..\src\graphics\animation\Animation.cpp" />
+    <ClCompile Include="..\..\src\graphics\animation\Animator.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\IndexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexBuffer.cpp" />
     <ClCompile Include="..\..\src\graphics\buffer\VertexDeclaration.cpp" />

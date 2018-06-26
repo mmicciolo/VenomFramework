@@ -1,5 +1,6 @@
 #include "ModelMesh.h"
 #include "../device/GraphicsDevice.h"
+#include "../../content/ModelContentLoader.h"
 
 VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice) {
 	this->graphicsDevice = graphicsDevice;
@@ -15,7 +16,7 @@ VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer
 }
 
 void VF::Graphics::ModelMesh::Draw() {
-	//effect->projectionViewWorld.world *= transform;
+	effect->projectionViewWorld.world *= modelNode->nodeTransform;
 	if (indexBuffer == nullptr) {
 		graphicsDevice->DrawPrimitives(vertexBuffer, effect);
 	}

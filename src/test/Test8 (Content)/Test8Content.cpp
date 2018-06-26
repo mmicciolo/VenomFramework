@@ -5,9 +5,12 @@
 #include "../../graphics/model/ModelMesh.h"
 #include "../../content/Content.h"
 #include "../../content/ModelContentLoader.h"
+#include "../../graphics/animation/Animator.h"
 
 void Test8Content::LoadModel() {
-	model = VF::Content::Content::Load<VF::Graphics::Model, VF::Content::ModelContentLoader>("boblampclean.md5mesh", graphicsDevice);
+	model = VF::Content::Content::Load<VF::Graphics::Model, VF::Content::ModelContentLoader>("HUD.x", graphicsDevice);
+	VF::Graphics::Animator animator(model);
+	animator.Animate(model->modelNodesMap.at("$dummy_root"), VF::Math::Matrix4(1.0f));
 }
 
 void Test8Content::SetupCamera() {

@@ -18,6 +18,7 @@ void VF::Graphics::BasicEffect::SetupShaders() {
 }
 
 void VF::Graphics::BasicEffect::Apply() {
+	Effect::Apply();
 	if (parameters.bonesList.size() > 0) {
 		parameters.vertexDeclaration = VertexDeclarationEnum::Skinned;
 	}
@@ -37,5 +38,4 @@ void VF::Graphics::BasicEffect::Apply() {
 	}
 	shader->SetUniform("bones", &parameters.bones, 100);
 	bgfx::setTexture(0, textureHandle, parameters.texture.textureHandle);
-	Effect::Apply();
 }

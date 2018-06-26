@@ -20,13 +20,12 @@
 
 namespace VF {
 	namespace Content {
-		struct NodeTransforms {
-			VF::Math::Matrix4 originalTransform;
-			VF::Math::Matrix4 parentTransform;
-		};
-		struct BoneMaps {
-			std::vector<VF::Graphics::ModelBone> bones;
-			std::map<std::string, unsigned int> boneIndexMap;
+		struct ModelNode {
+			std::string nodeName;
+			VF::Math::Matrix4 localTransform;
+			VF::Math::Matrix4 nodeTransform;
+			ModelNode * parent;
+			std::vector<ModelNode *> children;
 		};
 		class ModelContentLoader {
 		public:
@@ -35,24 +34,19 @@ namespace VF {
 		private:
 			std::string fileName;
 			VF::Graphics::GraphicsDevice * graphicsDevice;
-			//const aiScene * scene;
 			VF::Graphics::Texture2D ** textures;
 			int textureCount = 0;
 			int unamedNodeCount = 0;
+			std::vector<VF::Graphics::ModelMesh *> modelMeshes;
+			std::map<std::string, ModelNode *> modelNodesMap;
+			std::vector<VF::Graphics::Animation> animations;
 			VF::Graphics::Model * Import();
 			void ImportScene();
+			ModelNode * BuildNodeHierarchy(const aiScene * scene, aiNode * node, ModelNode * parent, VF::Math::Matrix4 parentTransform);
 			void ImportMaterials(const aiScene * scene);
-			void ImportNodes(const aiScene * scene);
-			void ImportNodes(const aiScene * scene, aiNode * node, VF::Math::Matrix4 parentTransform);
-			BoneMaps * ImportBones(const aiScene * scene, aiNode * node, aiMesh * mesh);
-			std::vector<VF::Graphics::Animation> ImportAnimations(const aiScene * scene, aiNode * node);
-			void BuildNodeTransformHierarchy(const aiScene * scene, aiNode * node, VF::Math::Matrix4 parentTransform);
-			VF::Graphics::ModelMesh * ImportMesh(aiMesh * mesh, BoneMaps * boneMaps);
+			void ImportMeshes(const aiScene * scene, aiNode * node, ModelNode * modelNode);
+			void ImportAnimations(const aiScene * scene);
 			VF::Math::Matrix4 assimpMatrixToVFMatrix(aiMatrix4x4 matrix);
-			std::vector<VF::Graphics::ModelMesh *> modelMeshes;
-			std::map<std::string, VF::Math::Matrix4> nodeTransformHierarchy;
-			std::map<std::string, aiNode *> nodeMap;
-			std::map<std::string, NodeTransforms> nodeTransformsMap;
 		};
 	}
 }
