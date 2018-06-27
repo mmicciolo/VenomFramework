@@ -7,6 +7,12 @@
 #include <vector>
 
 namespace VF {
+	namespace Content {
+		struct ModelNode;
+	}
+}
+
+namespace VF {
 	namespace Graphics {
 		class ModelBone {
 		public:
@@ -18,6 +24,7 @@ namespace VF {
 			VF::Math::Matrix4 parentTransform;
 			VF::Math::Matrix4 transform;
 			std::vector<VF::Graphics::Animation> animations;
+			VF::Content::ModelNode * modelNode;
 		protected:
 		private:
 		};

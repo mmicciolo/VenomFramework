@@ -26,11 +26,12 @@ void VF::Graphics::BasicEffect::Apply() {
 	shader->SetUniform("diffuseColor", &parameters.diffuseColor, 1);
 	shader->SetUniform("specularColor", &parameters.specularColor, 1);
 	for (int i = 0; i < parameters.bonesList.size(); i++) {
-		int index = parameters.boneIndexMap[parameters.bonesList[i].boneName];
+		//int index = parameters.boneIndexMap[parameters.bonesList[i].boneName];
 		//VF::Math::Matrix4 globalTrans = parameters.bonesList[i].parentTransform * parameters.bonesList[i].transform;
 		//parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * parameters.bonesList[i].transform * parameters.bonesList[i].boneOffset;
-		VF::Math::Matrix4 nodeTransform = parameters.bonesList[i].parentTransform * parameters.bonesList[i].originalTransform;
-		parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * nodeTransform * parameters.bonesList[i].boneOffset;
+		//VF::Math::Matrix4 nodeTransform = parameters.bonesList[i].parentTransform * parameters.bonesList[i].originalTransform;
+		//parameters.bones[index] = VF::Math::inverse(parameters.globalTransformation) * nodeTransform * parameters.bonesList[i].boneOffset;
+		//parameters.bones[i] = VF::Math::Matrix4(1.0f);
 	}
 	for (int i = 0; i < 100; i++) {
 		//parameters.bones[i] = parameters.globalTransformation * VF::Math::inverse(parameters.globalTransformation) * VF::Math::Matrix4(1.0f);

@@ -43,6 +43,7 @@ namespace VF {
 			VF::Graphics::Model * Import();
 			void ImportScene();
 			ModelNode * BuildNodeHierarchy(const aiScene * scene, aiNode * node, ModelNode * parent, VF::Math::Matrix4 parentTransform);
+			ModelNode * BuildNodeHierarchy2(const aiScene * scene, aiNode * node, ModelNode * parent, VF::Math::Matrix4 parentTransform);
 			void ImportMaterials(const aiScene * scene);
 			void ImportMeshes(const aiScene * scene, aiNode * node, ModelNode * modelNode);
 			void ImportAnimations(const aiScene * scene);

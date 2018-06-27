@@ -16,7 +16,13 @@ VF::Graphics::ModelMesh::ModelMesh(GraphicsDevice * graphicsDevice, VertexBuffer
 }
 
 void VF::Graphics::ModelMesh::Draw() {
-	effect->projectionViewWorld.world *= modelNode->nodeTransform;
+	if (bones.size() == 0) {
+		effect->projectionViewWorld.world *= modelNode->nodeTransform;
+	}
+	for (unsigned int i = 0; i < bones.size(); i++) {
+		BasicEffect * effect2 = (BasicEffect *)effect;
+		effect2->parameters.bones[i] = VF::Math::inverse(VF::Math::Matrix4(1.0f)) * bones[i].modelNode->nodeTransform * bones[i].boneOffset;
+	}
 	if (indexBuffer == nullptr) {
 		graphicsDevice->DrawPrimitives(vertexBuffer, effect);
 	}

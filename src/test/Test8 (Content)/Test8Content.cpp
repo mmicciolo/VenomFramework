@@ -5,12 +5,12 @@
 #include "../../graphics/model/ModelMesh.h"
 #include "../../content/Content.h"
 #include "../../content/ModelContentLoader.h"
-#include "../../graphics/animation/Animator.h"
 
 void Test8Content::LoadModel() {
 	model = VF::Content::Content::Load<VF::Graphics::Model, VF::Content::ModelContentLoader>("HUD.x", graphicsDevice);
-	VF::Graphics::Animator animator(model);
-	animator.Animate(model->modelNodesMap.at("$dummy_root"), VF::Math::Matrix4(1.0f));
+	animator = new VF::Graphics::Animator(model);
+	VF::Content::ModelNode * node = model->modelNodesMap.at("$dummy_root");
+	animator->Animate(node, VF::Math::Matrix4(1.0f), 0);
 }
 
 void Test8Content::SetupCamera() {
@@ -61,6 +61,11 @@ void Test8Content::UpdateCamera() {
 	camera->Move(window, keyboardState, mouseState);
 	if (keyboardState.IsKeyDown(VF::Input::Keys::Escape)) {
 		running = false;
+	}
+	if (keyboardState.IsKeyDown(VF::Input::Keys::Space)) {
+		if (keyCount == 260) { keyCount = 0;  }
+		animator->Animate(model->modelNodesMap.at("$dummy_root"), VF::Math::Matrix4(1.0f), keyCount);
+		keyCount++;
 	}
 	camera->Update();
 }

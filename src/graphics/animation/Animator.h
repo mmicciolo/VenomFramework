@@ -18,7 +18,7 @@ namespace VF {
 		class Animator {
 		public:
 			Animator(VF::Graphics::Model * model);
-			void Animate(VF::Content::ModelNode * modelNode, VF::Math::Matrix4 parentTransform);
+			void Animate(VF::Content::ModelNode * modelNode, VF::Math::Matrix4 parentTransform, int key);
 		protected:
 		private:
 			VF::Graphics::Model * model;

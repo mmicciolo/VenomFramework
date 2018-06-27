@@ -23,11 +23,38 @@ void VF::Content::ModelContentLoader::ImportScene() {
 	const aiScene * scene = importer.ReadFile(fileName, aiProcessPreset_TargetRealtime_Fast | aiProcess_MakeLeftHanded | aiProcess_FlipUVs);
 	ImportMaterials(scene);
 	ImportAnimations(scene);
+	BuildNodeHierarchy2(scene, scene->mRootNode, nullptr, VF::Math::Matrix4(1.0f));
 	BuildNodeHierarchy(scene, scene->mRootNode, nullptr, VF::Math::Matrix4(1.0f));
-	int r = 0;
 }
 
 VF::Content::ModelNode * VF::Content::ModelContentLoader::BuildNodeHierarchy(const aiScene * scene, aiNode * node, ModelNode * parent, VF::Math::Matrix4 parentTransform) {
+
+	if (std::string(node->mName.data) == "") {
+		node->mName = std::string("NoName") + std::to_string(unamedNodeCount);
+		unamedNodeCount++;
+	}
+
+	//ModelNode * modelNode = new ModelNode();
+	//modelNode->nodeName = node->mName.data;
+	//modelNode->localTransform = assimpMatrixToVFMatrix(node->mTransformation);
+	//modelNode->nodeTransform = parentTransform * modelNode->localTransform;
+	//modelNode->parent = parent;
+
+	ModelNode * modelNode = modelNodesMap[node->mName.data];
+
+	ImportMeshes(scene, node, modelNode);
+
+	for (unsigned int i = 0; i < node->mNumChildren; i++) {
+		//modelNode->children.push_back(BuildNodeHierarchy(scene, node->mChildren[i], modelNode, modelNode->nodeTransform));
+		BuildNodeHierarchy(scene, node->mChildren[i], modelNode, modelNode->nodeTransform);
+	}
+
+	//modelNodesMap[node->mName.data] = modelNode;
+
+	return modelNode;
+}
+
+VF::Content::ModelNode * VF::Content::ModelContentLoader::BuildNodeHierarchy2(const aiScene * scene, aiNode * node, ModelNode * parent, VF::Math::Matrix4 parentTransform) {
 
 	if (std::string(node->mName.data) == "") {
 		node->mName = std::string("NoName") + std::to_string(unamedNodeCount);
@@ -40,10 +67,10 @@ VF::Content::ModelNode * VF::Content::ModelContentLoader::BuildNodeHierarchy(con
 	modelNode->nodeTransform = parentTransform * modelNode->localTransform;
 	modelNode->parent = parent;
 
-	ImportMeshes(scene, node, modelNode);
+	//ImportMeshes(scene, node, modelNode);
 
 	for (unsigned int i = 0; i < node->mNumChildren; i++) {
-		modelNode->children.push_back(BuildNodeHierarchy(scene, node->mChildren[i], modelNode, modelNode->nodeTransform));
+		modelNode->children.push_back(BuildNodeHierarchy2(scene, node->mChildren[i], modelNode, modelNode->nodeTransform));
 	}
 
 	modelNodesMap[node->mName.data] = modelNode;
@@ -72,6 +99,14 @@ void VF::Content::ModelContentLoader::ImportMeshes(const aiScene * scene, aiNode
 		for (unsigned int i = 0; i < node->mNumMeshes; i++) {
 			aiMesh * mesh = scene->mMeshes[node->mMeshes[i]];
 			VF::Graphics::VertexDeclaration ** vertices = new VF::Graphics::VertexDeclaration*[mesh->mNumVertices];
+			std::map<std::string, unsigned int> * boneIndexMap = new std::map<std::string, unsigned int>();
+			std::vector<VF::Graphics::ModelBone> * bones = new std::vector<VF::Graphics::ModelBone>();
+			for (unsigned int b = 0; b < mesh->mNumBones; b++) {
+				(*boneIndexMap)[std::string(mesh->mBones[b]->mName.data)] = bones->size();
+				VF::Graphics::ModelBone * bone = new VF::Graphics::ModelBone(std::string(mesh->mBones[b]->mName.data), assimpMatrixToVFMatrix(mesh->mBones[b]->mOffsetMatrix));
+				bone->modelNode = modelNodesMap[bone->boneName];
+				bones->push_back(*bone);
+			}
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 				vertices[i] = new VF::Graphics::VertexDeclaration();
 				vertices[i]->begin();
@@ -99,6 +134,23 @@ void VF::Content::ModelContentLoader::ImportMeshes(const aiScene * scene, aiNode
 					float y = mesh->mTextureCoords[0][i].y;
 					vertices[i]->addVertexElement(new VF::Graphics::TextureVertexElement(VF::Math::Vector2(x, y)));
 				}
+				if (mesh->HasBones()) {
+					std::vector<float> weights;
+					std::vector<unsigned int> indices;
+					unsigned int boneIndex = 0;
+					for (unsigned int b = 0; b < mesh->mNumBones; b++) {
+						for (unsigned int n = 0; n < mesh->mBones[b]->mNumWeights; n++) {
+							if (mesh->mBones[b]->mWeights[n].mVertexId == i) {
+								weights.push_back(mesh->mBones[b]->mWeights[n].mWeight);
+								indices.push_back((*boneIndexMap)[std::string(mesh->mBones[b]->mName.data)]);
+							}
+						}
+					}
+					weights.resize(4);
+					indices.resize(4);
+					vertices[i]->addVertexElement(new VF::Graphics::BoneWeightVertexElement(VF::Math::Vector4(weights[0], weights[1], weights[2], weights[3])));
+					vertices[i]->addVertexElement(new VF::Graphics::BoneIndexVertexElement(VF::Math::Vector4(indices[0], indices[1], indices[2], indices[3])));
+				}
 				vertices[i]->end();
 			}
 			
@@ -119,6 +171,8 @@ void VF::Content::ModelContentLoader::ImportMeshes(const aiScene * scene, aiNode
 			}
 			
 			VF::Graphics::BasicEffect * effect = new VF::Graphics::BasicEffect();
+			effect->parameters.boneIndexMap = *boneIndexMap;
+			effect->parameters.bonesList = *bones;
 			
 			if (textureCount > 0) {
 				effect->parameters.texture = *textures[mesh->mMaterialIndex];
@@ -126,6 +180,8 @@ void VF::Content::ModelContentLoader::ImportMeshes(const aiScene * scene, aiNode
 			
 			VF::Graphics::ModelMesh * modelMesh = new VF::Graphics::ModelMesh(graphicsDevice, vertexBuffer, indexBuffer, effect);
 			modelMesh->modelNode = modelNode;
+			modelMesh->boneIndexMap = *boneIndexMap;
+			modelMesh->bones = *bones;
 			modelMeshes.push_back(modelMesh);
 		}
 	}
@@ -134,22 +190,24 @@ void VF::Content::ModelContentLoader::ImportMeshes(const aiScene * scene, aiNode
 void VF::Content::ModelContentLoader::ImportAnimations(const aiScene * scene) {
 	if (scene->HasAnimations()) {
 		for (unsigned int i = 0; i < scene->mNumAnimations; i++) {
-			aiAnimation * animation = scene->mAnimations[i];
-			for (unsigned int i = 0; i < animation->mNumChannels; i++) {
-				aiNodeAnim* nodeAnim = animation->mChannels[i];
-				VF::Graphics::Animation animation;
-				animation.animationName = nodeAnim->mNodeName.data;
+			aiAnimation * aiAnimation = scene->mAnimations[i];
+			VF::Graphics::Animation animation;
+			for (unsigned int i = 0; i < aiAnimation->mNumChannels; i++) {
+				aiNodeAnim* nodeAnim = aiAnimation->mChannels[i];
+				VF::Graphics::AnimationChannel animationChannel;
+				animationChannel.animationName = nodeAnim->mNodeName.data;
 				for (unsigned int n = 0; n < nodeAnim->mNumPositionKeys; n++) {
-					animation.translationKeys.push_back(VF::Graphics::TranslationKey(VF::Math::Vector3(nodeAnim->mPositionKeys[n].mValue.x, nodeAnim->mPositionKeys[n].mValue.y, nodeAnim->mPositionKeys[n].mValue.z), nodeAnim->mPositionKeys[n].mTime));
+					animationChannel.translationKeys.push_back(VF::Graphics::TranslationKey(VF::Math::Vector3(nodeAnim->mPositionKeys[n].mValue.x, nodeAnim->mPositionKeys[n].mValue.y, nodeAnim->mPositionKeys[n].mValue.z), nodeAnim->mPositionKeys[n].mTime));
 				}
 				for (unsigned int n = 0; n < nodeAnim->mNumRotationKeys; n++) {
-					animation.rotationKeys.push_back(VF::Graphics::RotationKey(VF::Math::Quaternion(nodeAnim->mRotationKeys[n].mValue.x, nodeAnim->mRotationKeys[n].mValue.y, nodeAnim->mRotationKeys[n].mValue.z, nodeAnim->mRotationKeys[n].mValue.w), nodeAnim->mRotationKeys[n].mTime));
+					animationChannel.rotationKeys.push_back(VF::Graphics::RotationKey(VF::Math::Quaternion(nodeAnim->mRotationKeys[n].mValue.w, nodeAnim->mRotationKeys[n].mValue.x, nodeAnim->mRotationKeys[n].mValue.y, nodeAnim->mRotationKeys[n].mValue.z), nodeAnim->mRotationKeys[n].mTime));
 				}
 				for (unsigned int n = 0; n < nodeAnim->mNumPositionKeys; n++) {
-					animation.scaleKeys.push_back(VF::Graphics::ScaleKey(VF::Math::Vector3(nodeAnim->mScalingKeys[n].mValue.x, nodeAnim->mScalingKeys[n].mValue.y, nodeAnim->mScalingKeys[n].mValue.z), nodeAnim->mScalingKeys[n].mTime));
+					animationChannel.scaleKeys.push_back(VF::Graphics::ScaleKey(VF::Math::Vector3(nodeAnim->mScalingKeys[n].mValue.x, nodeAnim->mScalingKeys[n].mValue.y, nodeAnim->mScalingKeys[n].mValue.z), nodeAnim->mScalingKeys[n].mTime));
 				}
-				animations.push_back(animation);
+				animation.animationChannels.push_back(animationChannel);
 			}
+			animations.push_back(animation);
 		}
 	}
 }

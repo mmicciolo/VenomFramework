@@ -43,12 +43,19 @@ namespace VF {
 		private:
 		};
 
-		class Animation {
+		class AnimationChannel {
 		public:
 			std::string animationName;
 			std::vector<TranslationKey> translationKeys;
 			std::vector<RotationKey> rotationKeys;
 			std::vector<ScaleKey> scaleKeys;
+		protected:
+		private:
+		};
+
+		class Animation {
+		public:
+			std::vector<AnimationChannel> animationChannels;
 		protected:
 		private:
 		};

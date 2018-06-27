@@ -2,6 +2,7 @@
 #define __MODEL_MESH_H_
 
 #include <vector>
+#include <map>
 #include "ModelBone.h"
 
 namespace VF {
@@ -24,6 +25,7 @@ namespace VF {
 			VertexBuffer * vertexBuffer;
 			IndexBuffer * indexBuffer;
 			Effect * effect;
+			std::map<std::string, unsigned int> boneIndexMap;
 			std::vector<ModelBone> bones;
 			VF::Math::Matrix4 transform;
 			VF::Content::ModelNode * modelNode;
