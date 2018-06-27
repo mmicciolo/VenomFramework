@@ -1,2 +1,43 @@
 # VenomFramework
 Multiplatform Window, Graphics, Input, Networking and Physics framework
+
+## Features
+- Multiplatform Windowing System
+  - Window, WindowManager
+  - Monitor, MonitorManager
+- Multiplatform Input System
+  - Keyboard
+  - Mouse
+- GLM Math Library Support
+- Multiplatform BGFX Renderer
+  - Easy to use wrapped interface (GraphicsDevice, Buffers, VertexDeclerations, Shaders, Uniforms)
+  - 3D Support
+  - 2D Support (TBA)
+- Effects
+  - Built in effects out of the box for basic good looking rendering
+  - Easily extensible
+- Lighting
+  - Ambient, Diffuse, Specular, Emmisive, Normal built into BasicEffect
+  - Shadow Mapping
+- Full Animation System
+  - Vertex Animation
+  - Skeletal Animation (GPU)
+  - Animation Blending
+  - Animation Player
+- Textures
+  - 2D Textures
+  - 3D Textures
+- Content
+  - Assimp Importing for Models (Materials, Meshes, Bones, Textures, etc)
+- Caching
+  - Built in asset caching for shaders, textures, models, sounds, etc.
+- Camera
+  - Basic camera class
+  - First Person Camera (no clipping)
+- Multithreading (TBA)
+- Physics (TBA)
+- Audio (TBA)
+- Networking (TBA)
+- Filesystem (TBA)
+- ImGUI (TBA)
+- Terrain? (TBA)
