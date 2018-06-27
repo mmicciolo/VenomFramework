@@ -2,6 +2,8 @@
 Multiplatform Window, Graphics, Input, Networking and Physics framework
 
 ## Features
+- Modern C++ Design
+- Exception Error Handling
 - Multiplatform Windowing System
   - Window, WindowManager
   - Monitor, MonitorManager
